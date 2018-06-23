@@ -1,1341 +1,926 @@
 
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_01
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_01
 ============================================================
-Get_driving_direction_valid() = True
-Get_reverse_driving_info() = False
-Get_ayc_reverse_movement() = False
-Get_ayc_reverse_det_possible() = False
-
-
-a
-=========
+@precondition
+	Get_driving_direction_valid() = True
+	Get_reverse_driving_info() = False
+	Get_ayc_reverse_movement() = False
+	Get_ayc_reverse_det_possible() = False
 
-Get_driving_direction_valid() = False
-Get_ayc_reverse_movement() = True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_02
+*	Get_driving_direction_valid() = False
+	Get_ayc_reverse_movement() = True
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_02
 ============================================================
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-( ESTIMATED_SLOPE_FILTERED ) >= ( TC4WD_SUPPORT . ENTRY_SLOPE )
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_03
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	( ESTIMATED_SLOPE_FILTERED ) >= ( TC4WD_SUPPORT . ENTRY_SLOPE )
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_03
 ============================================================
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) == True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_04
+@precondition
+	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) == True
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_04
 ============================================================
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_low
-ESTIMATED_SLOPE_ACTUAL = 1500
-ESTIMATED_SLOPE_FILTERED = 500
-Get_ayc_engine_control() == True
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) == True
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_low
+	ESTIMATED_SLOPE_ACTUAL = 1500
+	ESTIMATED_SLOPE_FILTERED = 500
+	Get_ayc_engine_control() == True
+	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) == True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_05
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
+	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_05
 ============================================================
-TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED < 0
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED < 0
 
-TCS_ACTUAL_TF_TORQUE = 2000
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_06
+*	TCS_ACTUAL_TF_TORQUE = 2000
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_06
 ============================================================
-TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER < (Tcs0_4wd_clutch_deadtime_thr + (sint16)Scaled_time(140u /*ms*/)) 
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER < (Tcs0_4wd_clutch_deadtime_thr + (sint16)Scaled_time(140u /*ms*/)) 
 
-TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER > (Tcs0_4wd_clutch_deadtime_thr + (sint16)Scaled_time(140u /*ms*/)) 
-TC4WDREF_CLUTCH_ACCELERATION_TIMER > needed_est_time
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_07 
+*	TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER > (Tcs0_4wd_clutch_deadtime_thr + (sint16)Scaled_time(140u /*ms*/)) 
+	TC4WDREF_CLUTCH_ACCELERATION_TIMER > needed_est_time
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_07 
 ============================================================
-Get_driver_req_idle_qf() = False
-Get_driver_req_idle((uint16)Tcs0_pedal_pos_idle_thr) = 1u /* True */
-
-
-a
-=========
+@precondition
+	Get_driver_req_idle_qf() = False
+	Get_driver_req_idle((uint16)Tcs0_pedal_pos_idle_thr) = 1u /* True */
 
-Get_sensor_fault_wh1() = True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_08 
+*	Get_sensor_fault_wh1() = True
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_08 
 ============================================================
-(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) > (100 * Tcs0_4wd_possible_accel_gap)
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr
-ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED
-Get_tcs_long_sens_available() = True
-Get_ayc_engine_control() = False
-TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
-
-
-a
-=========
+@precondition
+	(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) > (100 * Tcs0_4wd_possible_accel_gap)
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr
+	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED
+	Get_tcs_long_sens_available() = True
+	Get_ayc_engine_control() = False
+	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
 
-Get_tcs_long_sens_available() = False
-
-
-b
-=========
+*	Get_tcs_long_sens_available() = False
 
-Get_tcs_long_sens_available() = False
-TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
-Get_ayc_engine_control() = True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_09 
+*	Get_tcs_long_sens_available() = False
+	TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
+	Get_ayc_engine_control() = True
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_09 
 ============================================================
-TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.ENTRY_REF_FAILURE
-Get_ayc_engine_control() = True
-TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
-Get_tcs_long_sens_available() = True
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.ENTRY_REF_FAILURE
+	Get_ayc_engine_control() = True
+	TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
+	Get_tcs_long_sens_available() = True
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
 
-TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
-Get_tcs_long_sens_available() = False
-
-
-b
-=========
+*	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
+	Get_tcs_long_sens_available() = False
 
-TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
-Get_tcs_long_sens_available() = False
-TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
-Get_ayc_engine_control() = False
-
-
-c
-=========
+*	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
+	Get_tcs_long_sens_available() = False
+	TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
+	Get_ayc_engine_control() = False
 
-TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_10 
+*	TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_10 
 ============================================================
-(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap) 
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = True
-
-
-a
-=========
+@precondition
+	(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap) 
+	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = True
 
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_11 
+*	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_11 
 ============================================================
-ESTIMATED_SLOPE_SAVE > (ESTIMATED_SLOPE_FILTERED - 400) 
-
-
-a
-=========
+@precondition
+	ESTIMATED_SLOPE_SAVE > (ESTIMATED_SLOPE_FILTERED - 400) 
 
-ESTIMATED_SLOPE_SAVE < (ESTIMATED_SLOPE_FILTERED - 400) 
-Get_vsupp_eng_disabled() = False
-Get_tcs_long_sens_available() = True
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_12 
+*	ESTIMATED_SLOPE_SAVE < (ESTIMATED_SLOPE_FILTERED - 400) 
+	Get_vsupp_eng_disabled() = False
+	Get_tcs_long_sens_available() = True
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_12 
 ============================================================
-TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-Get_tcs_my_split_modus() = False
-Get_tcs_my_split_modus() = False
-Get_vsupp_eng_disabled() = False
-Get_vsupp_clu_disabled() = False
-Get_tcs_long_sens_available() = True
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-
-
-a
-=========
+@precondition
+	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
+	Get_tcs_my_split_modus() = False
+	Get_tcs_my_split_modus() = False
+	Get_vsupp_eng_disabled() = False
+	Get_vsupp_clu_disabled() = False
+	Get_tcs_long_sens_available() = True
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
 
-TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_13 
+*	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_13 
 ============================================================
+@precondition
 
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_14
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_14
 ============================================================
+@precondition
 
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_15
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_15
 ============================================================
+@precondition
 
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_16
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_16
 ============================================================
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_17
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_17
 ============================================================
-TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
-TC4WD_SUPPORT.CONDITIONS.DOUBT1 = True
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
+	TC4WD_SUPPORT.CONDITIONS.DOUBT1 = True
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
 
-TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
-TC4WD_SUPPORT.CONDITIONS.DOUBT1 = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_18
+*	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
+	TC4WD_SUPPORT.CONDITIONS.DOUBT1 = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_18
 ============================================================
-Get_vsupp_eng_disabled() = True
-
-
-a
-=========
+@precondition
+	Get_vsupp_eng_disabled() = True
 
-Get_vsupp_eng_disabled() = False
-Get_tcs_long_sens_available() = True
-Get_driving_direction_valid() = True
-Get_reverse_driving_info() = False
-Get_ayc_reverse_movement() = False
-Get_ayc_reverse_det_possible() = False
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-
-
-b
-=========
+*	Get_vsupp_eng_disabled() = False
+	Get_tcs_long_sens_available() = True
+	Get_driving_direction_valid() = True
+	Get_reverse_driving_info() = False
+	Get_ayc_reverse_movement() = False
+	Get_ayc_reverse_det_possible() = False
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
 
-Get_tcs_vehicle_braking() = True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_19
+*	Get_tcs_vehicle_braking() = True
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_19
 ============================================================
-Get_pulled_handbr_recognized() = True
-
-
-a
-=========
+@precondition
+	Get_pulled_handbr_recognized() = True
 
-Get_pulled_handbr_recognized() = False
-bus_clutch_signal.INFO.QUALIFIER = False
-Get_vsupp_clu_disabled() = False
-Get_tcs_long_sens_available() = True
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-TCS_RESISTANCE_ROAD < Tcs0_4wd_resist_cond_clutch
-
-
-
-Test Case :Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_20
+*	Get_pulled_handbr_recognized() = False
+	bus_clutch_signal.INFO.QUALIFIER = False
+	Get_vsupp_clu_disabled() = False
+	Get_tcs_long_sens_available() = True
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	TCS_RESISTANCE_ROAD < Tcs0_4wd_resist_cond_clutch
+
+
+
+Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_20
 ============================================================
-TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
-TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
-
-
-a
-=========
+@precondition
+	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
+	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
 
-TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_01
+*	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_01
 ============================================================
-TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-case Tc4wd_sup_default
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-Get_tcs_long_sens_available() = True
-Get_driver_req_idle_qf() = True
-TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+	case Tc4wd_sup_default
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
+	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+	Get_tcs_long_sens_available() = True
+	Get_driver_req_idle_qf() = True
+	TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-b
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr
-ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED
-(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) > (100 * Tcs0_4wd_possible_accel_gap)
-Get_ayc_engine_control() = False
-TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
-
-
-c
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr
+	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED
+	(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) > (100 * Tcs0_4wd_possible_accel_gap)
+	Get_ayc_engine_control() = False
+	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
-TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.ENTRY_REF_FAILURE
-(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap)   
-Get_ayc_engine_control() = True
-TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
-Get_tcs_long_sens_available() = True
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_02
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
+	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.ENTRY_REF_FAILURE
+	(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap)   
+	Get_ayc_engine_control() = True
+	TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
+	Get_tcs_long_sens_available() = True
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_02
 ============================================================
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
-TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
-TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
-Get_tcs_long_sens_available() = False
-Get_ayc_engine_control() = False
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
-
-
-b
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
+	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
+	TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
+	Get_tcs_long_sens_available() = False
+	Get_ayc_engine_control() = False
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-c
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
-TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
-Get_tcs_long_sens_available() = False
-Get_ayc_engine_control() = True
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_03
+*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
+	TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
+	Get_tcs_long_sens_available() = False
+	Get_ayc_engine_control() = True
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_03
 ============================================================
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_low
-TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
-Get_tcs_long_sens_available() = True
-Get_driver_req_idle_qf() = True
-TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_low
+	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
+	Get_tcs_long_sens_available() = True
+	Get_driver_req_idle_qf() = True
+	TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_low
-TC4WD_SUPPORT.CONDITIONS.DOUBT1 = False
-TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-Get_sensor_fault_wh1() = True
-ESTIMATED_SLOPE_SAVE > (ESTIMATED_SLOPE_FILTERED - 400) 
-
-
-b
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_low
+	TC4WD_SUPPORT.CONDITIONS.DOUBT1 = False
+	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+	Get_sensor_fault_wh1() = True
+	ESTIMATED_SLOPE_SAVE > (ESTIMATED_SLOPE_FILTERED - 400) 
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
-
-
-c
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
-
-
-d
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-
-
-e
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-
-
-f
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-Get_tcs_my_split_modus() = False
-Get_tcs_my_split_modus() = False
-Get_vsupp_eng_disabled() = False
-Get_vsupp_clu_disabled() = False
-Get_tcs_long_sens_available() = True
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_04
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
+	Get_tcs_my_split_modus() = False
+	Get_tcs_my_split_modus() = False
+	Get_vsupp_eng_disabled() = False
+	Get_vsupp_clu_disabled() = False
+	Get_tcs_long_sens_available() = True
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_04
 ============================================================
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
-
-
-b
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
-Get_tcs_long_sens_available() = True
-Get_driver_req_idle_qf() = True
-TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
-
-
-c
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
+	Get_tcs_long_sens_available() = True
+	Get_driver_req_idle_qf() = True
+	TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
-Get_tcs_long_sens_available() = True
-Get_driver_req_idle_qf() = True
-TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
-TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-
-
-d
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
+	Get_tcs_long_sens_available() = True
+	Get_driver_req_idle_qf() = True
+	TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
+	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-Get_sensor_fault_wh1() = True
-TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap) 
- ESTIMATED_SLOPE_FILTERED < Tcs0_4wd_slope_thr
-return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = True
-TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-Get_tcs_long_sens_available() = True
-
-
-e
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+	Get_sensor_fault_wh1() = True
+	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
+	(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap) 
+	 ESTIMATED_SLOPE_FILTERED < Tcs0_4wd_slope_thr
+	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = True
+	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	Get_tcs_long_sens_available() = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_METHOD_Test_01
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_METHOD_Test_01
 ============================================================
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-
-
-b
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-Get_pulled_handbr_recognized() = True
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-
-
-c
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
+	Get_pulled_handbr_recognized() = True
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
+	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-
-
-d
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_METHOD_Test_02
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_METHOD_Test_02
 ============================================================
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_clutch
-TC4WD_SUPPORT.EVENTS.E_CLUTCH_DONE = True
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_clutch
+	TC4WD_SUPPORT.EVENTS.E_CLUTCH_DONE = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_clutch
-TC4WD_SUPPORT.EVENTS.E_CLUTCH_DONE = False
-
-
-b
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_clutch
+	TC4WD_SUPPORT.EVENTS.E_CLUTCH_DONE = False
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
-TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
-
-
-c
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
+	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
-TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-
-
-d
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
+	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
-TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
-
-
-e
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
+	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_engine
-TC4WD_SUPPORT.EVENTS.E_ENGINE = True
-
-
-f
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_engine
+	TC4WD_SUPPORT.EVENTS.E_ENGINE = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_engine
-TC4WD_SUPPORT.EVENTS.E_ENGINE = False
-TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
-TC4WD_SUPPORT.CONDITIONS.DOUBT1 = True
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-
-
-g
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_engine
+	TC4WD_SUPPORT.EVENTS.E_ENGINE = False
+	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
+	TC4WD_SUPPORT.CONDITIONS.DOUBT1 = True
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
-TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
-TC4WD_SUPPORT.EVENTS.E_ENGINE_DONE = True
-
-
-h
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
+	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
+	TC4WD_SUPPORT.EVENTS.E_ENGINE_DONE = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
-TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
-
-
-i
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
+	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
-TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
-TC4WD_SUPPORT.EVENTS.E_ENGINE_DONE = True
-
-
-j
-=========
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
+	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
+	TC4WD_SUPPORT.EVENTS.E_ENGINE_DONE = True
 
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD != Tc4wd_sup_method_both
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_ENGINE_Test_01
+*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD != Tc4wd_sup_method_both
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_ENGINE_Test_01
 ============================================================
-case Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_ENGINE = True
-
-
-a
-=========
+@precondition
+	case Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_ENGINE = True
 
-case Tc4wd_sup_engine_controlled
-Get_vsupp_eng_disabled() = True
-
-
-b
-=========
+*	case Tc4wd_sup_engine_controlled
+	Get_vsupp_eng_disabled() = True
 
-case Tc4wd_sup_engine_controlled
-Get_vsupp_eng_disabled() = False
-Get_tcs_long_sens_available() = True
-Get_driving_direction_valid() = True
-Get_reverse_driving_info() = False
-Get_ayc_reverse_movement() = False
-Get_ayc_reverse_det_possible() = False
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
-
-
-c
-=========
+*	case Tc4wd_sup_engine_controlled
+	Get_vsupp_eng_disabled() = False
+	Get_tcs_long_sens_available() = True
+	Get_driving_direction_valid() = True
+	Get_reverse_driving_info() = False
+	Get_ayc_reverse_movement() = False
+	Get_ayc_reverse_det_possible() = False
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
 
-case Tc4wd_sup_engine_controlled
-Get_vsupp_eng_disabled() = False
-Get_tcs_long_sens_available() = True
-Get_driving_direction_valid() = True
-Get_reverse_driving_info() = False
-Get_ayc_reverse_movement() = False
-Get_ayc_reverse_det_possible() = False
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
-
-
-d
-=========
+*	case Tc4wd_sup_engine_controlled
+	Get_vsupp_eng_disabled() = False
+	Get_tcs_long_sens_available() = True
+	Get_driving_direction_valid() = True
+	Get_reverse_driving_info() = False
+	Get_ayc_reverse_movement() = False
+	Get_ayc_reverse_det_possible() = False
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
 
-case default
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_ENGINE_Test_02
+*	case default
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_ENGINE_Test_02
 ============================================================
-case Tc4wd_sup_default
-TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
-
-
-a
-=========
+@precondition
+	case Tc4wd_sup_default
+	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
 
-case Tc4wd_sup_engine_deadtime_running
-TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = False
-
-
-b
-=========
+*	case Tc4wd_sup_engine_deadtime_running
+	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = False
 
-case Tc4wd_sup_engine_deadtime_running
-TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
-TC4WD_SUPPORT.CONDITIONS.RESET_ENGINE_DEADTIMER = False
-TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER >= Tcs0_4wd_engine_deadtime_thr
-
-
-c
-=========
+*	case Tc4wd_sup_engine_deadtime_running
+	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
+	TC4WD_SUPPORT.CONDITIONS.RESET_ENGINE_DEADTIMER = False
+	TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER >= Tcs0_4wd_engine_deadtime_thr
 
-case Tc4wd_sup_engine_deadtime_running
-TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
-TC4WD_SUPPORT.CONDITIONS.RESET_ENGINE_DEADTIMER = False
-TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER < Tcs0_4wd_engine_deadtime_thr
-
-
-d
-=========
+*	case Tc4wd_sup_engine_deadtime_running
+	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
+	TC4WD_SUPPORT.CONDITIONS.RESET_ENGINE_DEADTIMER = False
+	TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER < Tcs0_4wd_engine_deadtime_thr
 
-case Tc4wd_sup_engine_deadtime_elapsed
-TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = False
-
-
-e
-=========
+*	case Tc4wd_sup_engine_deadtime_elapsed
+	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = False
 
-case Tc4wd_sup_engine_deadtime_elapsed
-TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
-
-
-f
-=========
+*	case Tc4wd_sup_engine_deadtime_elapsed
+	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
 
-case default
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_01
+*	case default
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_01
 ============================================================
-case Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_BRAKE = True
-
-
-a
-=========
+@precondition
+	case Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = True
 
-case Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-case Tc4wd_sup_act_doubt_ref_high in TC4WD_SUPPORT_CHECK_STATE_ACTIVATION() function
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-b
-=========
+*	case Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	case Tc4wd_sup_act_doubt_ref_high in TC4WD_SUPPORT_CHECK_STATE_ACTIVATION() function
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-case Tc4wd_sup_brake_decision
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
-
-
-c
-=========
+*	case Tc4wd_sup_brake_decision
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
 
-case Tc4wd_sup_brake_decision
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER = Tcs0_4wd_brake_cycle_time
-
-
-d
-=========
+*	case Tc4wd_sup_brake_decision
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER = Tcs0_4wd_brake_cycle_time
 
-case Tc4wd_sup_brake_decision
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-
-
-e
-=========
+*	case Tc4wd_sup_brake_decision
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
 
-case Tc4wd_sup_brake_dec_dur_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
-
-
-f
-=========
+*	case Tc4wd_sup_brake_dec_dur_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
 
-case Tc4wd_sup_brake_dec_dur_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER = Tcs0_4wd_brake_cycle_time
-
-
-g
-=========
+*	case Tc4wd_sup_brake_dec_dur_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER = Tcs0_4wd_brake_cycle_time
 
-case Tc4wd_sup_brake_dec_dur_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-
-
-h
-=========
+*	case Tc4wd_sup_brake_dec_dur_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
-
-
-i
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = True
-
-
-j
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-k
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-
-
-l
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
 
-case default
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_02
+*	case default
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_02
 ============================================================
-case Tc4wd_sup_default
-TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
-
-
-a
-=========
+@precondition
+	case Tc4wd_sup_default
+	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
 
-case Tc4wd_sup_brake_deadtime_running
-TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
-
-
-b
-=========
+*	case Tc4wd_sup_brake_deadtime_running
+	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
 
-case Tc4wd_sup_brake_deadtime_running
-TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
-TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER >= Tcs0_4wd_brake_deadtime_thr
-
-
-c
-=========
+*	case Tc4wd_sup_brake_deadtime_running
+	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
+	TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER >= Tcs0_4wd_brake_deadtime_thr
 
-case Tc4wd_sup_brake_deadtime_running
-TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
-TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER < Tcs0_4wd_brake_deadtime_thr
-
-
-d
-=========
+*	case Tc4wd_sup_brake_deadtime_running
+	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
+	TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER < Tcs0_4wd_brake_deadtime_thr
 
-case Tc4wd_sup_brake_deadtime_elapsed
-TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE == False
-
-
-e
-=========
+*	case Tc4wd_sup_brake_deadtime_elapsed
+	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE == False
 
-case Tc4wd_sup_brake_deadtime_elapsed
-TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE == True
-
-
-f
-=========
+*	case Tc4wd_sup_brake_deadtime_elapsed
+	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE == True
 
-case default
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_03
+*	case default
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_03
 ============================================================
-case Tc4wd_sup_brake_circle_dk
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
-
-
-a
-=========
+@precondition
+	case Tc4wd_sup_brake_circle_dk
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-b
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-case Tc4wd_sup_brake_circle_dk
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
-TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-Get_tcs_vehicle_braking() = False
-Get_vsupp_brk_disabled() = False
-TCS_HCU_TEMPERATURE > -150
-Get_tcs_hcu_temp_avail() == True
-bus_clutch_signal.INFO.QUALIFIER = False
-
-
-c
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	case Tc4wd_sup_brake_circle_dk
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
+	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+	Get_tcs_vehicle_braking() = False
+	Get_vsupp_brk_disabled() = False
+	TCS_HCU_TEMPERATURE > -150
+	Get_tcs_hcu_temp_avail() == True
+	bus_clutch_signal.INFO.QUALIFIER = False
 
-case Tc4wd_sup_brake_circle_dk
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
-
-
-d
-=========
+*	case Tc4wd_sup_brake_circle_dk
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
 
-case Tc4wd_sup_brake_circle_dk
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = False
-Get_tcs_vehicle_braking() = True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_04
+*	case Tc4wd_sup_brake_circle_dk
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = False
+	Get_tcs_vehicle_braking() = True
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_04
 ============================================================
-case Tc4wd_sup_brake_circle_dk_zero
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-
-
-a
-=========
+@precondition
+	case Tc4wd_sup_brake_circle_dk_zero
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-b
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-case Tc4wd_sup_brake_circle_dk_zero
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-Get_tcs_vehicle_braking() = False
-Get_vsupp_brk_disabled() = False
-TCS_HCU_TEMPERATURE > -150
-Get_tcs_hcu_temp_avail() == True
-bus_clutch_signal.INFO.QUALIFIER = False
-
-
-c
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	case Tc4wd_sup_brake_circle_dk_zero
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+	Get_tcs_vehicle_braking() = False
+	Get_vsupp_brk_disabled() = False
+	TCS_HCU_TEMPERATURE > -150
+	Get_tcs_hcu_temp_avail() == True
+	bus_clutch_signal.INFO.QUALIFIER = False
 
-case Tc4wd_sup_brake_circle_dk_zero
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-Get_tcs_vehicle_braking() = True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_05
+*	case Tc4wd_sup_brake_circle_dk_zero
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+	Get_tcs_vehicle_braking() = True
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_05
 ============================================================
-case Tc4wd_sup_brake_circle_dk_zero
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-
-
-a
-=========
+@precondition
+	case Tc4wd_sup_brake_circle_dk_zero
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-b
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-case Tc4wd_sup_brake_circle_sk
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-Get_tcs_vehicle_braking() = False
-TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-Get_vsupp_brk_disabled() = False
-TCS_HCU_TEMPERATURE > -150
-Get_tcs_hcu_temp_avail() == True
-bus_clutch_signal.INFO.QUALIFIER = False
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-
-
-c
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	case Tc4wd_sup_brake_circle_sk
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+	Get_tcs_vehicle_braking() = False
+	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+	Get_vsupp_brk_disabled() = False
+	TCS_HCU_TEMPERATURE > -150
+	Get_tcs_hcu_temp_avail() == True
+	bus_clutch_signal.INFO.QUALIFIER = False
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
 
-case Tc4wd_sup_brake_circle_sk
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-Get_tcs_vehicle_braking() = True
-
-
-d
-=========
+*	case Tc4wd_sup_brake_circle_sk
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+	Get_tcs_vehicle_braking() = True
 
-case Tc4wd_sup_brake_circle_sk
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = False
-Get_tcs_vehicle_braking() = True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_06
+*	case Tc4wd_sup_brake_circle_sk
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = False
+	Get_tcs_vehicle_braking() = True
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_06
 ============================================================
-case Tc4wd_sup_brake_circle_sk_zero
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-
-
-a
-=========
+@precondition
+	case Tc4wd_sup_brake_circle_sk_zero
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-b
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-case Tc4wd_sup_brake_circle_sk_zero
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-Get_tcs_vehicle_braking() = False
-TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-Get_vsupp_brk_disabled() = False
-TCS_HCU_TEMPERATURE > -150
-Get_tcs_hcu_temp_avail() == True
-bus_clutch_signal.INFO.QUALIFIER = False
-
-
-c
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	case Tc4wd_sup_brake_circle_sk_zero
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+	Get_tcs_vehicle_braking() = False
+	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+	Get_vsupp_brk_disabled() = False
+	TCS_HCU_TEMPERATURE > -150
+	Get_tcs_hcu_temp_avail() == True
+	bus_clutch_signal.INFO.QUALIFIER = False
 
-case Tc4wd_sup_brake_circle_sk_zero
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-Get_tcs_vehicle_braking() = True
-
-
-d
-=========
+*	case Tc4wd_sup_brake_circle_sk_zero
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+	Get_tcs_vehicle_braking() = True
 
-case default
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_01
+*	case default
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_01
 ============================================================
-case default
-
-
-a
-=========
+@precondition
+	case default
 
-case Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_CLUTCH = True
-
-
-b
-=========
+*	case Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_CLUTCH = True
 
-case Tc4wd_sup_clutch_controlled
-TC4WD_SUPPORT.EVENTS.E_CLUTCH = True
-Get_pulled_handbr_recognized() = True
-
-
-c
-=========
+*	case Tc4wd_sup_clutch_controlled
+	TC4WD_SUPPORT.EVENTS.E_CLUTCH = True
+	Get_pulled_handbr_recognized() = True
 
-case Tc4wd_sup_clutch_controlled
-Get_pulled_handbr_recognized() = False
-bus_clutch_signal.INFO.QUALIFIER = False
-Get_vsupp_clu_disabled() = False
-Get_tcs_long_sens_available() = True
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-TCS_RESISTANCE_ROAD < Tcs0_4wd_resist_cond_clutch
-TC4WD_SUPPORT.COUNTERS.CLUTCH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.CLUTCH_MAX_TIME
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_02
+*	case Tc4wd_sup_clutch_controlled
+	Get_pulled_handbr_recognized() = False
+	bus_clutch_signal.INFO.QUALIFIER = False
+	Get_vsupp_clu_disabled() = False
+	Get_tcs_long_sens_available() = True
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	TCS_RESISTANCE_ROAD < Tcs0_4wd_resist_cond_clutch
+	TC4WD_SUPPORT.COUNTERS.CLUTCH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.CLUTCH_MAX_TIME
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_02
 ============================================================
-case Tc4wd_sup_default
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
-
-
-a
-=========
+@precondition
+	case Tc4wd_sup_default
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
 
-case Tc4wd_sup_clutch_deadtime_running
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-
-
-b
-=========
+*	case Tc4wd_sup_clutch_deadtime_running
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
 
-case Tc4wd_sup_clutch_deadtime_running
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
-TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
-TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
-
-
-c
-=========
+*	case Tc4wd_sup_clutch_deadtime_running
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
+	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
+	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
 
-case Tc4wd_sup_clutch_deadtime_running
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
-TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER >= Tcs0_4wd_clutch_deadtime_thr
-
-
-d
-=========
+*	case Tc4wd_sup_clutch_deadtime_running
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
+	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+	TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER >= Tcs0_4wd_clutch_deadtime_thr
 
-case Tc4wd_sup_clutch_deadtime_running
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
-TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER < Tcs0_4wd_clutch_deadtime_thr
-
-
-e
-=========
+*	case Tc4wd_sup_clutch_deadtime_running
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
+	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+	TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER < Tcs0_4wd_clutch_deadtime_thr
 
-case Tc4wd_sup_clutch_deadtime_elapsed
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-
-
-f
-=========
+*	case Tc4wd_sup_clutch_deadtime_elapsed
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
 
-case Tc4wd_sup_clutch_deadtime_elapsed
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
-
-
-g
-=========
+*	case Tc4wd_sup_clutch_deadtime_elapsed
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
 
-case default
-
-
-
-Test Case :Test case TC4WD_SUPPORT_CHECK_STATE_REFERENCE_Test_01
+*	case default
+
+
+
+Test case TC4WD_SUPPORT_CHECK_STATE_REFERENCE_Test_01
 ============================================================
-Get_driver_req_idle_qf() = True
-Get_driver_req_idle((uint16)Tcs0_pedal_pos_idle_thr) = 1u
-case Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_FAILURE = True
-
-
-a
-=========
+@precondition
+	Get_driver_req_idle_qf() = True
+	Get_driver_req_idle((uint16)Tcs0_pedal_pos_idle_thr) = 1u
+	case Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_FAILURE = True
 
-case Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_FAILURE = False
-
-
-b
-=========
+*	case Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_FAILURE = False
 
-case Tc4wd_sup_in_doubt
-TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET = True
-
-
-c
-=========
+*	case Tc4wd_sup_in_doubt
+	TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET = True
 
-case Tc4wd_sup_in_doubt
-TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET = False
-
-
-d
-=========
+*	case Tc4wd_sup_in_doubt
+	TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET = False
 
-case default
-
-
-
-Test Case :Test case TC4WD_SUPPORT_POST_PROCESSING_Test_01
+*	case default
+
+
+
+Test case TC4WD_SUPPORT_POST_PROCESSING_Test_01
 ============================================================
-TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk
-case default in function TC4WD_SUPPORT_CHECK_STATE_BRAKE() 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-a
-=========
+@precondition
+	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk
+	case default in function TC4WD_SUPPORT_CHECK_STATE_BRAKE() 
+	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-case Tc4wd_sup_brake_circle_dk_zero
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-Get_tcs_vehicle_braking() = False
-TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-Get_vsupp_brk_disabled() = False
-TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-TCS_HCU_TEMPERATURE > -150
-Get_tcs_hcu_temp_avail() == True
-bus_clutch_signal.INFO.QUALIFIER = False
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-
-
-b
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	case Tc4wd_sup_brake_circle_dk_zero
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+	Get_tcs_vehicle_braking() = False
+	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+	Get_vsupp_brk_disabled() = False
+	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+	TCS_HCU_TEMPERATURE > -150
+	Get_tcs_hcu_temp_avail() == True
+	bus_clutch_signal.INFO.QUALIFIER = False
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-
-
-c
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
 
-case Tc4wd_sup_brake_perm
-TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-case Tc4wd_sup_brake_circle_sk_zero
-TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-Get_tcs_vehicle_braking() = False
-TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-Get_vsupp_brk_disabled() = False
-TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-TCS_HCU_TEMPERATURE > -150
-Get_tcs_hcu_temp_avail() == True
-bus_clutch_signal.INFO.QUALIFIER = False
-TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-
-
-d
-=========
+*	case Tc4wd_sup_brake_perm
+	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+	case Tc4wd_sup_brake_circle_sk_zero
+	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+	Get_tcs_vehicle_braking() = False
+	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+	Get_vsupp_brk_disabled() = False
+	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+	TCS_HCU_TEMPERATURE > -150
+	Get_tcs_hcu_temp_avail() == True
+	bus_clutch_signal.INFO.QUALIFIER = False
+	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
 
-case Tc4wd_sup_default
-TC4WD_SUPPORT.EVENTS.E_ENGINE = True
-
-
-e
-=========
+*	case Tc4wd_sup_default
+	TC4WD_SUPPORT.EVENTS.E_ENGINE = True
 
-case Tc4wd_sup_engine_controlled
-Get_vsupp_eng_disabled() = False
-Get_tcs_long_sens_available() = True
-Get_driving_direction_valid() = True
-Get_reverse_driving_info() = False
-Get_ayc_reverse_movement() = False
-Get_ayc_reverse_det_possible() = False
-Get_sensor_fault_wh1() = False
-Get_sensor_fault_wh2() = False
-Get_sensor_fault_wh3() = False
-Get_sensor_fault_wh4() = False
-TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
-Get_tc4supp_engine_active() = True
-TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-
+*	case Tc4wd_sup_engine_controlled
+	Get_vsupp_eng_disabled() = False
+	Get_tcs_long_sens_available() = True
+	Get_driving_direction_valid() = True
+	Get_reverse_driving_info() = False
+	Get_ayc_reverse_movement() = False
+	Get_ayc_reverse_det_possible() = False
+	Get_sensor_fault_wh1() = False
+	Get_sensor_fault_wh2() = False
+	Get_sensor_fault_wh3() = False
+	Get_sensor_fault_wh4() = False
+	TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
+	Get_tc4supp_engine_active() = True
+	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high

@@ -32,10 +32,12 @@ with open(filepath) as fp:
             dat = (ch.strip())
             TEST_CASE_Name = (re.search('"(.+?)"', dat)).group(1)
             if Order_Check_Flag == 0:                                       # Order_Check_Flag = zero  Means Executing after COU_ASSERT
-                dest.write("\n\r\n\r\n\rTest Case :")
+                dest.write("\n\n\n")
                 dest.write(TEST_CASE_Name)
                 dest.write("\n============================================================\n")
                 Order_Check_Flag = 1
+                dest.write("@precondition\n")
+
             break
         else:
             pass
@@ -48,20 +50,19 @@ with open(filepath) as fp:
             if COU_CALL_Flag:
                 COU_CALL_Flag = 0
                 ASSERT_Missing += 1
-                Missed_Asserts.append(TEST_CASE_Name)
+                Missed_Asserts.append(TEST_CASE_Name)           # Assert missing finding logic
             COU_SET_Count += 1
             if Order_Check_Flag == 0 and COU_TEST_Flag:
-                dest.write("\n\r\n\r{}\n".format(chr(Sub_Cond)).encode("UTF-8"))
-                dest.write("=========\n\n")
-                Sub_Cond += 1
+                dest.write("\n*")
                 Order_Check_Flag = 1
             dat = (ch.strip())
             dat1 = re.search('"(.+?)"', dat)
             if COU_TEST_Flag:
                 found = dat1.group(1)
                 print(found)
+                dest.write('\t')
                 dest.write(found)
-                dest.write('\n\r')
+                dest.write('\n')
                 ''' 
                 ==============================================================================
                                     COU_CALL IDENTIFICATION
@@ -81,10 +82,9 @@ with open(filepath) as fp:
             COU_ASSERT_Count += 1
             Order_Check_Flag = 0
             COU_CALL_Flag = 0
-            print("********************")
         else:
             pass
-        
+
         line = fp.readline()
         Num_Lines += 1
 
