@@ -9,6 +9,7 @@ import time
 import re, sys
 from Tkinter import *
 import Tkinter, Tkconstants, tkFileDialog, tkMessageBox
+import os
 
 
 Str = '''*********************************************************
@@ -28,30 +29,36 @@ Order_Check_Flag = 0  #
 COU_SET_Count, COU_CALL_Count, COU_ASSERT_Count, COU_TEST_Count = 0, 0, 0, 0
 Num_Lines = 0
 Name = " "
+Annotation_missing = 0
+Annotation_missed_in = []
+alph = 98
+alph1 = 98
+
 
 def event_updater():
     global Event_Print_Flag
     global Events
     if Event_Print_Flag:
-        dest.write("*\n* @events\n*")
+        dest.write(" *\n * @events\n *")
         Event_Print_Flag = 0
         Events = set(Events)
         for i in Events:
-            dest.write('\t')
+            dest.write(' ')
             dest.write(i)
-            dest.write('\n*')
+            dest.write('\n *')
         Events = []
 
 
 def results_updater():
     global Assert_Print_Flag
-    global Asserts
+    global Asserts, alph1
     if Assert_Print_Flag:
-        dest.write("\n* @results\n**\t")
+        dest.write("\n * @results\n * {}:\n * ".format(chr(97)))
+        alph1 = 98
         Assert_Print_Flag = 0
         for i in Asserts:
             dest.write(i)
-            dest.write('\t')
+            dest.write(' ')
         Asserts = []
 
 
@@ -59,9 +66,10 @@ def generator():
     global COU_TEST_Count, ASSERT_Missing, Missed_Asserts, Order_Check_Flag, TEST_CASE_Name, COU_ASSERT_Count
     global dest, COU_CALL_Flag, COU_TEST_Flag, COU_SET_Count, COU_CALL_Count, Event_Print_Flag, Assert_Print_Flag
     global Num_Lines, Name
-    global Name, E1
+    global Name, E1, Annotation_missing, alph, alph1, found
     First_Time = 0
     Name = E1.get()
+    dest = open("output/Doxygen_Gen.txt", "w")
 
     # Loop Starts here
     with open(filepath) as fp:
@@ -78,7 +86,7 @@ def generator():
             while ch.find("COU_TEST") == 0:
                 COU_TEST_Count += 1
                 COU_TEST_Flag = 1
-
+                alph = 98
                 if COU_CALL_Flag:
                     COU_CALL_Flag = 0
                     ASSERT_Missing += 1
@@ -88,22 +96,27 @@ def generator():
 
                 results_updater()
                 if First_Time:
-                    dest.write("\n* @type\n*\n* @regression\n*\n* @integration\n*\n* @validates\n*\n*")
+                    dest.write("\n * @type\n *\n * @regression\n *\n * @integration\n *\n * @validates\n *\n *")
                 First_Time = 1
                 dat = (ch.strip())
-                TEST_CASE_Name = (re.search('"(.+?)"', dat)).group(1)
+                dat1 = (re.search('"(.+?)"', dat))
+                if dat1:
+                    TEST_CASE_Name = dat1.group(1)
+                else:
+                    Annotation_missing += 1
+                    Annotation_missed_in.append(Num_Lines+1)
                 if Order_Check_Flag == 0:  # Order_Check_Flag = zero  Means Executing after COU_ASSERT
                     dest.write("\n**/\n\n\n ")
                     dest.write(TEST_CASE_Name)
                     dest.write("\n============================================================\n")
                     Order_Check_Flag = 1
                     dest.write("/**\n")
-                    dest.write("* @brief\n*\n*")
-                    dest.write(" @description\n*\n*")
-                    dest.write(" @author\n*\t")
+                    dest.write(" * @brief\n *\n *")
+                    dest.write(" @description\n *\n *")
+                    dest.write(" @author\n * ")
                     dest.write(Name)
-                    dest.write("\n*\n")
-                    dest.write("* @preconditions\n*")
+                    dest.write("\n *\n")
+                    dest.write(" * @preconditions\n * {}:\n".format(chr(97)))
                 break
             else:
                 pass
@@ -119,17 +132,21 @@ def generator():
                     Missed_Asserts.append(TEST_CASE_Name)  # Assert missing finding logic
                 COU_SET_Count += 1
                 if Order_Check_Flag == 0 and COU_TEST_Flag:
-                    dest.write("*\n*")
+
+                    dest.write(" * \n * {}:\n".format(chr(alph)))
+                    alph += 1
                     Order_Check_Flag = 1
-                    Asserts.append('\n**')
+                    Asserts.append('\n * {}:\n *'.format(chr(alph1)))
+                    alph1 += 1
                 dat = (ch.strip())
                 dat1 = re.search('"(.+?)"', dat)
                 if COU_TEST_Flag:                   # Omiting checking SET before starting Test cases
                     if dat1:
                         found = dat1.group(1)
                     else:
-                        pass
-                    dest.write('*\t')
+                        Annotation_missing += 1
+                        Annotation_missed_in.append(Num_Lines+1)
+                    dest.write(' * ')
                     dest.write(found)
                     dest.write('\n')
                     ''' 
@@ -147,7 +164,8 @@ def generator():
                 if dat1:
                     found = dat1.group(1)
                 else:
-                    pass
+                    Annotation_missing += 1
+                    Annotation_missed_in.append(Num_Lines+1)
                 Events.append(found)
                 ''' 
                 ==============================================================================
@@ -161,14 +179,15 @@ def generator():
 
                 dat = (ch.strip())
                 dat1 = re.search('"(.+?)"', dat)
-                current_assert_list = set(Asserts)
+                # current_assert_list = set(Asserts)
                 if dat1:
                     found = dat1.group(1)
                 else:
-                    pass
-                if found not in current_assert_list:
-                    Asserts.append(found)
-                    Asserts.append('\n*')
+                    Annotation_missing += 1
+                    Annotation_missed_in.append(Num_Lines+1)
+                # if found not in current_assert_list:
+                Asserts.append(found)
+                Asserts.append('\n *')
                 Assert_Print_Flag = 1
             else:
                 pass
@@ -179,6 +198,9 @@ def generator():
     results_updater()
 
     Missed_Asserts = set(Missed_Asserts)
+    if Annotation_missing > 0:
+        error("Annotation Missing\nPlease Update Annotations properly\n{}".format(Annotation_missed_in))
+
 
     ''' 
     ==============================================================================
@@ -199,10 +221,12 @@ def generator():
 *   Number Of Test Cases        : {}
 *   Number Of Lines             : {}
 *   Number Of Asserts           : {}
+*   Number of Annotations Missed: {}
+*   Where You Missed Annotation : Line Numbers:\n                                   {}
 *   Number Of Asserts Missed    : {}
-*   Where You Missed            :  {}
+*   Where You Missed            : {}
 ======================================================='''.format(time.asctime(), fp.name, dest.name, COU_TEST_Count, Num_Lines,
-                                                                  COU_ASSERT_Count, ASSERT_Missing,
+                                                                  COU_ASSERT_Count,Annotation_missing, Annotation_missed_in, ASSERT_Missing,
                                                                   "\n\t\t\t\t\t\t\t\t\t".join(Missed_Asserts))
 
     dest.close()
@@ -217,7 +241,7 @@ def generator():
     dest.close()
     T = Text(root, height=2, width=30)
     T.pack(pady = 20)
-    T.insert(END, "Generation Finished !\nPlease close this window")
+    T.insert(END, "Generation Finished !\nPlease close this window !")
 
 
 # def quit():
@@ -280,6 +304,10 @@ def info():
     tkMessageBox.showinfo("Doxygen Generator", Str)
 
 
+def error(str):
+    tkMessageBox.showerror("Doxygen Generator", str)
+
+
 def choose_file():
     global filepath, root, dest
 
@@ -290,6 +318,8 @@ def choose_file():
 
 
 if __name__ == '__main__':
-    dest = open("output/Doxygen_Gen.txt", "w")
     gui_main()
+    osCommandString = "notepad.exe output/Doxygen_Gen.txt"
+    os.system(osCommandString)
+
 

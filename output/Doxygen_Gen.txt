@@ -9,2081 +9,2421 @@
 ========================================================
 *                   SUMMARY                            *        
 ========================================================
-*   Date and Time               : Mon Jun 25 23:38:41 2018
+*   Date and Time               : Tue Jun 26 22:31:45 2018
 *   Input File                  : E:/Learnings/Python/Precondtion_Update_Tool/Test.txt                                
 *   Output File                 : output/Doxygen_Gen.txt
 *   Number Of Test Cases        : 38
-*   Number Of Lines             : 4711
-*   Number Of Asserts           : 194
+*   Number Of Lines             : 4715
+*   Number Of Asserts           : 197
+*   Number of Annotations Missed: 2
+*   Where You Missed Annotation : Line Numbers:
+                                   [4277, 4631]
 *   Number Of Asserts Missed    : 1
-*   Where You Missed            :  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_02
+*   Where You Missed            : Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_02
 =======================================================**/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_01
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	Get_driving_direction_valid() = True
-*	Get_reverse_driving_info() = False
-*	Get_ayc_reverse_movement() = False
-*	Get_ayc_reverse_det_possible() = False
-*
-**	Get_driving_direction_valid() = False
-*	Get_ayc_reverse_movement() = True
-*
-* @events
-*	Calling Initialization function
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = False;	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * Get_driving_direction_valid() = True
+ * Get_reverse_driving_info() = False
+ * Get_ayc_reverse_movement() = False
+ * Get_ayc_reverse_det_possible() = False
+ * 
+ * b:
+ * Get_driving_direction_valid() = False
+ * Get_ayc_reverse_movement() = True
+ *
+ * @events
+ * Calling Initialization function
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = False; 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_02
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	( ESTIMATED_SLOPE_FILTERED ) >= ( TC4WD_SUPPORT . ENTRY_SLOPE )
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.ENTRY_SLOPE == MAX(TC4WD_SUPPORT.ENTRY_SLOPE, ESTIMATED_SLOPE_FILTERED);	
-*	
-**	TC4WD_SUPPORT.ENTRY_SLOPE = ESTIMATED_SLOPE_FILTERED; 	
-*	TC4WD_SUPPORT.ENTRY_REF_FAILURE = TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * ( ESTIMATED_SLOPE_FILTERED ) >= ( TC4WD_SUPPORT . ENTRY_SLOPE )
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.ENTRY_SLOPE == MAX(TC4WD_SUPPORT.ENTRY_SLOPE, ESTIMATED_SLOPE_FILTERED); 
+ * 
+ * b:
+ * TC4WD_SUPPORT.ENTRY_SLOPE = ESTIMATED_SLOPE_FILTERED;  
+ * TC4WD_SUPPORT.ENTRY_REF_FAILURE = TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_03
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) == True
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE -= 80	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) == True
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE -= 80 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_04
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_low
-*	ESTIMATED_SLOPE_ACTUAL = 1500
-*	ESTIMATED_SLOPE_FILTERED = 500
-*	Get_ayc_engine_control() == True
-*	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) == True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
-*	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME = Tcs0_4wd_feedback_max_time	
-*	
-**	TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME = Tcs0_4wd_feedback_min_time	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_low
+ * ESTIMATED_SLOPE_ACTUAL = 1500
+ * ESTIMATED_SLOPE_FILTERED = 500
+ * Get_ayc_engine_control() == True
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) == True
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME = Tcs0_4wd_feedback_max_time 
+ * 
+ * b:
+ * TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME = Tcs0_4wd_feedback_min_time 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_05
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED < 0
-*
-**	TCS_ACTUAL_TF_TORQUE = 2000
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME = Tcs0_4wd_gsens_cnt_thr + 200	
-*	
-**	TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME = Tcs0_4wd_gsens_cnt_thr	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED < 0
+ * 
+ * b:
+ * TCS_ACTUAL_TF_TORQUE = 2000
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME = Tcs0_4wd_gsens_cnt_thr + 200 
+ * 
+ * b:
+ * TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME = Tcs0_4wd_gsens_cnt_thr 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_06
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER < (Tcs0_4wd_clutch_deadtime_thr + (sint16)Scaled_time(140u /*ms*/)) 
-*
-**	TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER > (Tcs0_4wd_clutch_deadtime_thr + (sint16)Scaled_time(140u /*ms*/)) 
-*	TC4WDREF_CLUTCH_ACCELERATION_TIMER > needed_est_time
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.THRESHOLDS.CLUTCH_MAX_TIME == Tcs0_4wd_clutch_max_open_time	
-*	
-**	TC4WD_SUPPORT.THRESHOLDS.CLUTCH_MAX_TIME == Tcs0_4wd_clutch_min_open_time	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER < (Tcs0_4wd_clutch_deadtime_thr + (sint16)Scaled_time(140u /*ms*/)) 
+ * 
+ * b:
+ * TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER > (Tcs0_4wd_clutch_deadtime_thr + (sint16)Scaled_time(140u /*ms*/)) 
+ * TC4WDREF_CLUTCH_ACCELERATION_TIMER > needed_est_time
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.THRESHOLDS.CLUTCH_MAX_TIME == Tcs0_4wd_clutch_max_open_time 
+ * 
+ * b:
+ * TC4WD_SUPPORT.THRESHOLDS.CLUTCH_MAX_TIME == Tcs0_4wd_clutch_min_open_time 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_07 
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	Get_driver_req_idle_qf() = False
-*	Get_driver_req_idle((uint16)Tcs0_pedal_pos_idle_thr) = 1u /* True */
-*
-**	Get_sensor_fault_wh1() = True
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.DOUBT2 == False	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.DOUBT2 == True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * Get_driver_req_idle_qf() = False
+ * Get_driver_req_idle((uint16)Tcs0_pedal_pos_idle_thr) = 1u /* True */
+ * 
+ * b:
+ * Get_sensor_fault_wh1() = True
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.DOUBT2 == False 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.DOUBT2 == False 
+ * TC4WD_SUPPORT.CONDITIONS.DOUBT2 == True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_08 
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) > (100 * Tcs0_4wd_possible_accel_gap)
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr
-*	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED
-*	Get_tcs_long_sens_available() = True
-*	Get_ayc_engine_control() = False
-*	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
-*
-**	Get_tcs_long_sens_available() = False
-*
-**	Get_tcs_long_sens_available() = False
-*	TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
-*	Get_ayc_engine_control() = True
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.LOW_BY_CLUTCH == True	
-*	TC4WD_SUPPORT.CONDITIONS.LOW_BY_BRAKE  == False	
-*	TC4WD_SUPPORT.CONDITIONS.LOW_BY_ENGINE == True	
-*	TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_CLUTCH == False	
-*	TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_BRAKE == False	
-*	TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_ENGINE == False	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.LOW_BY_CLUTCH == False	
-*	TC4WD_SUPPORT.CONDITIONS.LOW_BY_ENGINE == False	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_CLUTCH == True	
-*	TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_BRAKE == True	
-*	TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_ENGINE == True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * (TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) > (100 * Tcs0_4wd_possible_accel_gap)
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr
+ * ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED
+ * Get_tcs_long_sens_available() = True
+ * Get_ayc_engine_control() = False
+ * TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
+ * 
+ * b:
+ * Get_tcs_long_sens_available() = False
+ * 
+ * c:
+ * Get_tcs_long_sens_available() = False
+ * TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
+ * Get_ayc_engine_control() = True
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.LOW_BY_CLUTCH == True 
+ * TC4WD_SUPPORT.CONDITIONS.LOW_BY_BRAKE  == False 
+ * TC4WD_SUPPORT.CONDITIONS.LOW_BY_ENGINE == True 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_CLUTCH == False 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_BRAKE == False 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_ENGINE == False 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.LOW_BY_CLUTCH == False 
+ * TC4WD_SUPPORT.CONDITIONS.LOW_BY_BRAKE  == False 
+ * TC4WD_SUPPORT.CONDITIONS.LOW_BY_ENGINE == False 
+ * 
+ * c:
+ * TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_CLUTCH == True 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_BRAKE == True 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_ENGINE == True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_09 
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.ENTRY_REF_FAILURE
-*	Get_ayc_engine_control() = True
-*	TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
-*	Get_tcs_long_sens_available() = True
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*
-**	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
-*	Get_tcs_long_sens_available() = False
-*
-**	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
-*	Get_tcs_long_sens_available() = False
-*	TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
-*	Get_ayc_engine_control() = False
-*
-**	TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.HIGH_BY_CLUTCH == True	
-*	TC4WD_SUPPORT.CONDITIONS.HIGH_BY_BRAKE == True	
-*	TC4WD_SUPPORT.CONDITIONS.HIGH_BY_ENGINE == True	
-*	TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_CLUTCH == False	
-*	TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_BRAKE == False	
-*	TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_ENGINE == False	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.HIGH_BY_CLUTCH == False	
-*	TC4WD_SUPPORT.CONDITIONS.HIGH_BY_BRAKE == False	
-*	TC4WD_SUPPORT.CONDITIONS.HIGH_BY_ENGINE == False	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_CLUTCH == True	
-*	TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_ENGINE == True	
-*	
-**	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.ENTRY_REF_FAILURE
+ * Get_ayc_engine_control() = True
+ * TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
+ * Get_tcs_long_sens_available() = True
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * 
+ * b:
+ * TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
+ * Get_tcs_long_sens_available() = False
+ * 
+ * c:
+ * TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
+ * Get_tcs_long_sens_available() = False
+ * TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
+ * Get_ayc_engine_control() = False
+ * 
+ * d:
+ * TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.HIGH_BY_CLUTCH == True 
+ * TC4WD_SUPPORT.CONDITIONS.HIGH_BY_BRAKE == True 
+ * TC4WD_SUPPORT.CONDITIONS.HIGH_BY_ENGINE == True 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_CLUTCH == False 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_BRAKE == False 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_ENGINE == False 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.HIGH_BY_CLUTCH == False 
+ * TC4WD_SUPPORT.CONDITIONS.HIGH_BY_BRAKE == False 
+ * TC4WD_SUPPORT.CONDITIONS.HIGH_BY_ENGINE == False 
+ * 
+ * c:
+ * TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_CLUTCH == True 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_BRAKE == False 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_ENGINE == True 
+ * 
+ * d:
+ * TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_CLUTCH == False 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_BRAKE == False 
+ * TC4WD_SUPPORT.CONDITIONS.RESET_HIGH_BY_ENGINE == False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_10 
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap) 
-*	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = True
-*
-**	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.DO_GSENS == True	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.DO_GSENS == False	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * (TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap) 
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = True
+ * 
+ * b:
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.DO_GSENS == True 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.DO_GSENS == False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_11 
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	ESTIMATED_SLOPE_SAVE > (ESTIMATED_SLOPE_FILTERED - 400) 
-*
-**	ESTIMATED_SLOPE_SAVE < (ESTIMATED_SLOPE_FILTERED - 400) 
-*	Get_vsupp_eng_disabled() = False
-*	Get_tcs_long_sens_available() = True
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.STOP_TOO_LOW = True	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.STOP_TOO_LOW = False	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * ESTIMATED_SLOPE_SAVE > (ESTIMATED_SLOPE_FILTERED - 400) 
+ * 
+ * b:
+ * ESTIMATED_SLOPE_SAVE < (ESTIMATED_SLOPE_FILTERED - 400) 
+ * Get_vsupp_eng_disabled() = False
+ * Get_tcs_long_sens_available() = True
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.STOP_TOO_LOW = True 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.STOP_TOO_LOW = False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_12 
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-*	Get_tcs_my_split_modus() = False
-*	Get_tcs_my_split_modus() = False
-*	Get_vsupp_eng_disabled() = False
-*	Get_vsupp_clu_disabled() = False
-*	Get_tcs_long_sens_available() = True
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*
-**	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.STOP_TOO_HIGH = False	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.STOP_TOO_HIGH = True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
+ * Get_tcs_my_split_modus() = False
+ * Get_tcs_my_split_modus() = False
+ * Get_vsupp_eng_disabled() = False
+ * Get_vsupp_clu_disabled() = False
+ * Get_tcs_long_sens_available() = True
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * 
+ * b:
+ * TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.STOP_TOO_HIGH = False 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.STOP_TOO_HIGH = True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_13 
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.DO_CLUTCH = (Tcs0_4wd_ref_supp_clutch_enable != 0)	
-*	TC4WD_SUPPORT.CONDITIONS.DO_CLUTCH = False	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.DO_CLUTCH = (Tcs0_4wd_ref_supp_clutch_enable != 0) 
+ * TC4WD_SUPPORT.CONDITIONS.DO_CLUTCH = False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_14
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.DO_ENGINE = (Tcs0_4wd_ref_supp_engine_enable != 0)	
-*	TC4WD_SUPPORT.CONDITIONS.DO_ENGINE = False	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.DO_ENGINE = (Tcs0_4wd_ref_supp_engine_enable != 0) 
+ * TC4WD_SUPPORT.CONDITIONS.DO_ENGINE = False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_15
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.DO_BRAKE = (Tcs0_4wd_ref_supp_brake_enable != 0)	
-*	TC4WD_SUPPORT.CONDITIONS.DO_BRAKE == False	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.DO_BRAKE = (Tcs0_4wd_ref_supp_brake_enable != 0) 
+ * TC4WD_SUPPORT.CONDITIONS.DO_BRAKE == False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_16
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.DO_ENGINE_AFTER_BRAKE == (Tcs0_4wd_ref_supp_engine_enable != 0)	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.DO_ENGINE_AFTER_BRAKE = False	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.DO_ENGINE_AFTER_BRAKE == (Tcs0_4wd_ref_supp_engine_enable != 0) 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.DO_ENGINE_AFTER_BRAKE = False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_17
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
-*	TC4WD_SUPPORT.CONDITIONS.DOUBT1 = True
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-*
-**	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
-*	TC4WD_SUPPORT.CONDITIONS.DOUBT1 = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.DO_BRAKE_AFTER_ENGINE = (Tcs0_4wd_ref_supp_brake_enable != 0)	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.DO_BRAKE_AFTER_ENGINE = False	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
+ * TC4WD_SUPPORT.CONDITIONS.DOUBT1 = True
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
+ * TC4WD_SUPPORT.CONDITIONS.DOUBT1 = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.DO_BRAKE_AFTER_ENGINE = (Tcs0_4wd_ref_supp_brake_enable != 0) 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.DO_BRAKE_AFTER_ENGINE = False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_18
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	Get_vsupp_eng_disabled() = True
-*
-**	Get_vsupp_eng_disabled() = False
-*	Get_tcs_long_sens_available() = True
-*	Get_driving_direction_valid() = True
-*	Get_reverse_driving_info() = False
-*	Get_ayc_reverse_movement() = False
-*	Get_ayc_reverse_det_possible() = False
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*
-**	Get_tcs_vehicle_braking() = True
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.STOP_ENGINE == True	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.STOP_ENGINE = False	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.FORCE_ZERO_BRAKE == True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * Get_vsupp_eng_disabled() = True
+ * 
+ * b:
+ * Get_vsupp_eng_disabled() = False
+ * Get_tcs_long_sens_available() = True
+ * Get_driving_direction_valid() = True
+ * Get_reverse_driving_info() = False
+ * Get_ayc_reverse_movement() = False
+ * Get_ayc_reverse_det_possible() = False
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * 
+ * c:
+ * Get_tcs_vehicle_braking() = True
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.STOP_ENGINE == True 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.STOP_ENGINE = False 
+ * 
+ * c:
+ * TC4WD_SUPPORT.CONDITIONS.FORCE_ZERO_BRAKE == True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_19
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	Get_pulled_handbr_recognized() = True
-*
-**	Get_pulled_handbr_recognized() = False
-*	bus_clutch_signal.INFO.QUALIFIER = False
-*	Get_vsupp_clu_disabled() = False
-*	Get_tcs_long_sens_available() = True
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	TCS_RESISTANCE_ROAD < Tcs0_4wd_resist_cond_clutch
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.STOP_CLUTCH == True	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.STOP_CLUTCH == False	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * Get_pulled_handbr_recognized() = True
+ * 
+ * b:
+ * Get_pulled_handbr_recognized() = False
+ * bus_clutch_signal.INFO.QUALIFIER = False
+ * Get_vsupp_clu_disabled() = False
+ * Get_tcs_long_sens_available() = True
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * TCS_RESISTANCE_ROAD < Tcs0_4wd_resist_cond_clutch
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.STOP_CLUTCH == True 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.STOP_CLUTCH == False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_20
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
-*	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
-*
-**	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-*	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.CONDITIONS.RESET_CLUTCH_DEADTIMER == True	
-*	
-**	TC4WD_SUPPORT.CONDITIONS.RESET_CLUTCH_DEADTIMER == False	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
+ * TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
+ * 
+ * b:
+ * TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+ * TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.CONDITIONS.RESET_CLUTCH_DEADTIMER == True 
+ * 
+ * b:
+ * TC4WD_SUPPORT.CONDITIONS.RESET_CLUTCH_DEADTIMER == False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_01
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-*	case Tc4wd_sup_default
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-*	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
-*	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-*	Get_tcs_long_sens_available() = True
-*	Get_driver_req_idle_qf() = True
-*	TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr
-*	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED
-*	(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) > (100 * Tcs0_4wd_possible_accel_gap)
-*	Get_ayc_engine_control() = False
-*	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
-*	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.ENTRY_REF_FAILURE
-*	(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap)   
-*	Get_ayc_engine_control() = True
-*	TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
-*	Get_tcs_long_sens_available() = True
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_unknown	
-*	
-**	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE == False	
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_STOP == True	
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_START == False	
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_ref_low	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_ref_high	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+ * case Tc4wd_sup_default
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+ * ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+ * Get_tcs_long_sens_available() = True
+ * Get_driver_req_idle_qf() = True
+ * TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr
+ * ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED
+ * (TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) > (100 * Tcs0_4wd_possible_accel_gap)
+ * Get_ayc_engine_control() = False
+ * TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
+ * TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.ENTRY_REF_FAILURE
+ * (TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap)   
+ * Get_ayc_engine_control() = True
+ * TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
+ * Get_tcs_long_sens_available() = True
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_unknown 
+ * 
+ * b:
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE == False 
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_STOP == True 
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_START == False 
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_ref_low 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_ref_high 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_02
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
-*	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
-*	TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
-*	Get_tcs_long_sens_available() = False
-*	Get_ayc_engine_control() = False
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
-*	TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
-*	Get_tcs_long_sens_available() = False
-*	Get_ayc_engine_control() = True
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE == False	
-*	TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET == True	
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_STOP == False	
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_pattern_ref_high_gsens	
-*	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER == 0	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_unknown	
-*	
-**	TC4WD_SUPPORT.EVENTS.E_BRAKE_STOP == True	
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_pattern_ref_low	
-*	
-**	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
+ * TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.ENTRY_REF_FAILURE
+ * TC4WD_SUPPORT.ENTRY_SLOPE <= ESTIMATED_SLOPE_FILTERED
+ * Get_tcs_long_sens_available() = False
+ * Get_ayc_engine_control() = False
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * d:
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_low
+ * TC4WD_SUPPORT.ENTRY_SLOPE > (ESTIMATED_SLOPE_FILTERED + 400)
+ * Get_tcs_long_sens_available() = False
+ * Get_ayc_engine_control() = True
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH = True
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE == False 
+ * TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET == True 
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_STOP == False 
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_pattern_ref_high_gsens 
+ * TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER == 0 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_unknown 
+ * 
+ * c:
+ * TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET == True 
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_STOP == True 
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_pattern_ref_low 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_unknown 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_03
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_low
-*	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-*	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
-*	Get_tcs_long_sens_available() = True
-*	Get_driver_req_idle_qf() = True
-*	TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_low
-*	TC4WD_SUPPORT.CONDITIONS.DOUBT1 = False
-*	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-*	Get_sensor_fault_wh1() = True
-*	ESTIMATED_SLOPE_SAVE > (ESTIMATED_SLOPE_FILTERED - 400) 
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-*	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-*	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-*	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-*	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-*	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
-*	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-*	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-*	Get_tcs_my_split_modus() = False
-*	Get_tcs_my_split_modus() = False
-*	Get_vsupp_eng_disabled() = False
-*	Get_vsupp_clu_disabled() = False
-*	Get_tcs_long_sens_available() = True
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_unknown	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER++	
-*	
-**	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER == TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME	
-*	
-**	
-**	TC4WD_SUPPORT.EVENTS.E_BRAKE_START == False	
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_STOP  == True	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_pattern_ref_high_brake	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_low
+ * TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+ * ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
+ * Get_tcs_long_sens_available() = True
+ * Get_driver_req_idle_qf() = True
+ * TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_low
+ * TC4WD_SUPPORT.CONDITIONS.DOUBT1 = False
+ * TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+ * Get_sensor_fault_wh1() = True
+ * ESTIMATED_SLOPE_SAVE > (ESTIMATED_SLOPE_FILTERED - 400) 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+ * TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+ * TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+ * TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+ * 
+ * f:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+ * TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+ * TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
+ * 
+ * g:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens
+ * TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+ * TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
+ * Get_tcs_my_split_modus() = False
+ * Get_tcs_my_split_modus() = False
+ * Get_vsupp_eng_disabled() = False
+ * Get_vsupp_clu_disabled() = False
+ * Get_tcs_long_sens_available() = True
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_unknown 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER++ 
+ * 
+ * d:
+ * TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER == TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME 
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_unknown 
+ * 
+ * f:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_default 
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_START == False 
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_STOP  == True 
+ * 
+ * g:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_pattern_ref_high_brake 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_04
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-*	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-*	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-*	TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-*	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
-*	Get_tcs_long_sens_available() = True
-*	Get_driver_req_idle_qf() = True
-*	TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-*	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-*	ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
-*	ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
-*	Get_tcs_long_sens_available() = True
-*	Get_driver_req_idle_qf() = True
-*	TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
-*	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-*	TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
-*	Get_sensor_fault_wh1() = True
-*	TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
-*	(TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap) 
-*	 ESTIMATED_SLOPE_FILTERED < Tcs0_4wd_slope_thr
-*	return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = True
-*	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	Get_tcs_long_sens_available() = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER ++	
-*	
-**	TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER == TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_unknown	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_default	
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_START == False	
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_STOP == True	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens	
-*	
-**	TC4WD_SUPPORT.EVENTS.E_DEFAULT = True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+ * TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+ * TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+ * TC4WD_SUPPORT.REF_FAILURE > TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+ * ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
+ * Get_tcs_long_sens_available() = True
+ * Get_driver_req_idle_qf() = True
+ * TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+ * TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = False
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+ * ESTIMATED_SLOPE_FILTERED > Tcs0_4wd_slope_thr 
+ * ESTIMATED_SLOPE_ACTUAL >= ESTIMATED_SLOPE_FILTERED 
+ * Get_tcs_long_sens_available() = True
+ * Get_driver_req_idle_qf() = True
+ * TCS_REFERENCE_VELO > Tcs_4wd_downhill_velo_thr
+ * TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+ * TC4WD_SUPPORT.REF_FAILURE < TC4WD_SUPPORT.THRESHOLDS.MAX_REF_FAILURE
+ * Get_sensor_fault_wh1() = True
+ * TCS_END_TIMER[pt_eng_id] <= Scaled_time(2170u /*ms*/)
+ * (TC4WDREF_LONG_SENS_VEHACC_MAX - TCS_LONG_SENS_VEHACC) < (100 * Tcs0_4wd_possible_accel_gap) 
+ *  ESTIMATED_SLOPE_FILTERED < Tcs0_4wd_slope_thr
+ * return value of function GET_WHDYAC_ENGDEC_ACTIVE_SUM(Whdyac_engdec_service_etc) = True
+ * TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER < TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * Get_tcs_long_sens_available() = True
+ * 
+ * f:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_brake
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER ++ 
+ * 
+ * b:
+ * TC4WD_SUPPORT.COUNTERS.REF_HIGH_COUNTER == TC4WD_SUPPORT.THRESHOLDS.GSENS_MAX_TIME 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_act_doubt_unknown 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION == Tc4wd_sup_default 
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_START == False 
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_STOP == True 
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_pattern_ref_high_gsens 
+ * 
+ * f:
+ * TC4WD_SUPPORT.EVENTS.E_DEFAULT = True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_METHOD_Test_01
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-*	Get_pulled_handbr_recognized() = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER = True
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.EVENTS.E_DECIDER == False	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_clutch	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_both	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_engine	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_brake	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_default	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER = True
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER = True
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER = True
+ * Get_pulled_handbr_recognized() = True
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER = True
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER = True
+ * 
+ * f:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER = True
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER == False 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_clutch 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_both 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_engine 
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_brake 
+ * 
+ * f:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_default 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_METHOD_Test_02
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_clutch
-*	TC4WD_SUPPORT.EVENTS.E_CLUTCH_DONE = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_clutch
-*	TC4WD_SUPPORT.EVENTS.E_CLUTCH_DONE = False
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_engine
-*	TC4WD_SUPPORT.EVENTS.E_ENGINE = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_engine
-*	TC4WD_SUPPORT.EVENTS.E_ENGINE = False
-*	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
-*	TC4WD_SUPPORT.CONDITIONS.DOUBT1 = True
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
-*	TC4WD_SUPPORT.EVENTS.E_ENGINE_DONE = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
-*	TC4WD_SUPPORT.EVENTS.E_ENGINE_DONE = True
-*
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD != Tc4wd_sup_method_both
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD != Tc4wd_sup_default	
-*	
-**	
-**	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_both	
-*	
-**	
-**	
-**	
-**	
-**	
-**	
-**	TC4WD_SUPPORT.EVENTS.E_BRAKE_START == False	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_clutch
+ * TC4WD_SUPPORT.EVENTS.E_CLUTCH_DONE = True
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_clutch
+ * TC4WD_SUPPORT.EVENTS.E_CLUTCH_DONE = False
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_brake
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION != Tc4wd_sup_act_doubt_ref_high
+ * 
+ * f:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_engine
+ * TC4WD_SUPPORT.EVENTS.E_ENGINE = True
+ * 
+ * g:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_engine
+ * TC4WD_SUPPORT.EVENTS.E_ENGINE = False
+ * TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
+ * TC4WD_SUPPORT.CONDITIONS.DOUBT1 = True
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
+ * 
+ * h:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
+ * TC4WD_SUPPORT.EVENTS.E_ENGINE_DONE = True
+ * 
+ * i:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
+ * 
+ * j:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD = Tc4wd_sup_method_both
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_DONE = True
+ * TC4WD_SUPPORT.EVENTS.E_ENGINE_DONE = True
+ * 
+ * k:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD != Tc4wd_sup_method_both
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_default 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD != Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_default 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_both 
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_both 
+ * 
+ * f:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_default 
+ * 
+ * g:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_both 
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_both 
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_both 
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_method_both 
+ * 
+ * h:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_default 
+ * 
+ * i:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_default 
+ * 
+ * j:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_METHOD == Tc4wd_sup_default 
+ * 
+ * k:
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE_START == False 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_ENGINE_Test_01
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	case Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_ENGINE = True
-*
-**	case Tc4wd_sup_engine_controlled
-*	Get_vsupp_eng_disabled() = True
-*
-**	case Tc4wd_sup_engine_controlled
-*	Get_vsupp_eng_disabled() = False
-*	Get_tcs_long_sens_available() = True
-*	Get_driving_direction_valid() = True
-*	Get_reverse_driving_info() = False
-*	Get_ayc_reverse_movement() = False
-*	Get_ayc_reverse_det_possible() = False
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
-*
-**	case Tc4wd_sup_engine_controlled
-*	Get_vsupp_eng_disabled() = False
-*	Get_tcs_long_sens_available() = True
-*	Get_driving_direction_valid() = True
-*	Get_reverse_driving_info() = False
-*	Get_ayc_reverse_movement() = False
-*	Get_ayc_reverse_det_possible() = False
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
-*
-**	case default
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.STATES.ENGINE_LOGIC == Tc4wd_sup_engine_controlled	
-*	
-**	TC4WD_SUPPORT.STATES.ENGINE_LOGIC == Tc4wd_sup_default	
-*	
-**	
-**	TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER++	
-*	
-**	TC4WD_SUPPORT.EVENTS.E_DEFAULT == True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * case Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_ENGINE = True
+ * 
+ * b:
+ * case Tc4wd_sup_engine_controlled
+ * Get_vsupp_eng_disabled() = True
+ * 
+ * c:
+ * case Tc4wd_sup_engine_controlled
+ * Get_vsupp_eng_disabled() = False
+ * Get_tcs_long_sens_available() = True
+ * Get_driving_direction_valid() = True
+ * Get_reverse_driving_info() = False
+ * Get_ayc_reverse_movement() = False
+ * Get_ayc_reverse_det_possible() = False
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
+ * 
+ * d:
+ * case Tc4wd_sup_engine_controlled
+ * Get_vsupp_eng_disabled() = False
+ * Get_tcs_long_sens_available() = True
+ * Get_driving_direction_valid() = True
+ * Get_reverse_driving_info() = False
+ * Get_ayc_reverse_movement() = False
+ * Get_ayc_reverse_det_possible() = False
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
+ * 
+ * e:
+ * case default
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.STATES.ENGINE_LOGIC == Tc4wd_sup_engine_controlled 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.ENGINE_LOGIC == Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.ENGINE_LOGIC == Tc4wd_sup_default 
+ * 
+ * d:
+ * TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER++ 
+ * 
+ * e:
+ * TC4WD_SUPPORT.EVENTS.E_DEFAULT == True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_ENGINE_Test_02
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	case Tc4wd_sup_default
-*	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
-*
-**	case Tc4wd_sup_engine_deadtime_running
-*	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = False
-*
-**	case Tc4wd_sup_engine_deadtime_running
-*	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
-*	TC4WD_SUPPORT.CONDITIONS.RESET_ENGINE_DEADTIMER = False
-*	TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER >= Tcs0_4wd_engine_deadtime_thr
-*
-**	case Tc4wd_sup_engine_deadtime_running
-*	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
-*	TC4WD_SUPPORT.CONDITIONS.RESET_ENGINE_DEADTIMER = False
-*	TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER < Tcs0_4wd_engine_deadtime_thr
-*
-**	case Tc4wd_sup_engine_deadtime_elapsed
-*	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = False
-*
-**	case Tc4wd_sup_engine_deadtime_elapsed
-*	TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
-*
-**	case default
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.STATES.ENGINE_DEADTIME_LOGIC = Tc4wd_sup_engine_deadtime_running	
-*	
-**	TC4WD_SUPPORT.STATES.ENGINE_DEADTIME_LOGIC = Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.STATES.ENGINE_DEADTIME_LOGIC = Tc4wd_sup_engine_deadtime_elapsed	
-*	
-**	TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER++	
-*	
-**	TC4WD_SUPPORT.STATES.ENGINE_DEADTIME_LOGIC == Tc4wd_sup_default	
-*	
-**	
-**	TC4WD_SUPPORT.EVENTS.E_DEFAULT == True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * case Tc4wd_sup_default
+ * TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
+ * 
+ * b:
+ * case Tc4wd_sup_engine_deadtime_running
+ * TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = False
+ * 
+ * c:
+ * case Tc4wd_sup_engine_deadtime_running
+ * TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
+ * TC4WD_SUPPORT.CONDITIONS.RESET_ENGINE_DEADTIMER = False
+ * TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER >= Tcs0_4wd_engine_deadtime_thr
+ * 
+ * d:
+ * case Tc4wd_sup_engine_deadtime_running
+ * TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
+ * TC4WD_SUPPORT.CONDITIONS.RESET_ENGINE_DEADTIMER = False
+ * TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER < Tcs0_4wd_engine_deadtime_thr
+ * 
+ * e:
+ * case Tc4wd_sup_engine_deadtime_elapsed
+ * TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = False
+ * 
+ * f:
+ * case Tc4wd_sup_engine_deadtime_elapsed
+ * TC4WD_SUPPORT.STATE_INFOS.S_ENGINE_ACTIVE = True
+ * 
+ * g:
+ * case default
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.STATES.ENGINE_DEADTIME_LOGIC = Tc4wd_sup_engine_deadtime_running 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.ENGINE_DEADTIME_LOGIC = Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.ENGINE_DEADTIME_LOGIC = Tc4wd_sup_engine_deadtime_elapsed 
+ * 
+ * d:
+ * TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER++ 
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.ENGINE_DEADTIME_LOGIC == Tc4wd_sup_default 
+ * 
+ * f:
+ * TC4WD_SUPPORT.COUNTERS.ENGINE_DEADTIME_COUNTER++ 
+ * 
+ * g:
+ * TC4WD_SUPPORT.EVENTS.E_DEFAULT == True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_01
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	case Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = True
-*
-**	case Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	case Tc4wd_sup_act_doubt_ref_high in TC4WD_SUPPORT_CHECK_STATE_ACTIVATION() function
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	case Tc4wd_sup_brake_decision
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
-*
-**	case Tc4wd_sup_brake_decision
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER = Tcs0_4wd_brake_cycle_time
-*
-**	case Tc4wd_sup_brake_decision
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*
-**	case Tc4wd_sup_brake_dec_dur_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
-*
-**	case Tc4wd_sup_brake_dec_dur_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER = Tcs0_4wd_brake_cycle_time
-*
-**	case Tc4wd_sup_brake_dec_dur_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*
-**	case default
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_brake_decision	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_brake_perm	
-*	
-**	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER--	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC = Tc4wd_sup_brake_decision	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC = Tc4wd_sup_default	
-*	
-**	
-**	
-**	
-**	
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_brake_dec_dur_perm	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default	
-*	
-**	
-**	TC4WD_SUPPORT.EVENTS.E_DEFAULT == True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * case Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = True
+ * 
+ * b:
+ * case Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * case Tc4wd_sup_act_doubt_ref_high in TC4WD_SUPPORT_CHECK_STATE_ACTIVATION() function
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * c:
+ * case Tc4wd_sup_brake_decision
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
+ * 
+ * d:
+ * case Tc4wd_sup_brake_decision
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER = Tcs0_4wd_brake_cycle_time
+ * 
+ * e:
+ * case Tc4wd_sup_brake_decision
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * 
+ * f:
+ * case Tc4wd_sup_brake_dec_dur_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
+ * 
+ * g:
+ * case Tc4wd_sup_brake_dec_dur_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER = Tcs0_4wd_brake_cycle_time
+ * 
+ * h:
+ * case Tc4wd_sup_brake_dec_dur_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * 
+ * i:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER > 0
+ * 
+ * j:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = True
+ * 
+ * k:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * l:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * 
+ * m:
+ * case default
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_brake_decision 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_brake_perm 
+ * 
+ * c:
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER-- 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC = Tc4wd_sup_brake_decision 
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC = Tc4wd_sup_default 
+ * 
+ * f:
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER-- 
+ * 
+ * g:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC = Tc4wd_sup_brake_decision 
+ * 
+ * h:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC = Tc4wd_sup_default 
+ * 
+ * i:
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER-- 
+ * 
+ * j:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_brake_dec_dur_perm 
+ * 
+ * k:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default 
+ * 
+ * l:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_brake_perm 
+ * 
+ * m:
+ * TC4WD_SUPPORT.EVENTS.E_DEFAULT == True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_02
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	case Tc4wd_sup_default
-*	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
-*
-**	case Tc4wd_sup_brake_deadtime_running
-*	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
-*
-**	case Tc4wd_sup_brake_deadtime_running
-*	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER >= Tcs0_4wd_brake_deadtime_thr
-*
-**	case Tc4wd_sup_brake_deadtime_running
-*	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER < Tcs0_4wd_brake_deadtime_thr
-*
-**	case Tc4wd_sup_brake_deadtime_elapsed
-*	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE == False
-*
-**	case Tc4wd_sup_brake_deadtime_elapsed
-*	TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE == True
-*
-**	case default
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.STATES.BRAKE_DEADTIME_LOGIC == Tc4wd_sup_brake_deadtime_running	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_DEADTIME_LOGIC == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_DEADTIME_LOGIC == Tc4wd_sup_brake_deadtime_elapsed	
-*	
-**	TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER++	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_DEADTIME_LOGIC = Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER	
-*	
-**	TC4WD_SUPPORT.EVENTS.E_DEFAULT == True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * case Tc4wd_sup_default
+ * TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
+ * 
+ * b:
+ * case Tc4wd_sup_brake_deadtime_running
+ * TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = False
+ * 
+ * c:
+ * case Tc4wd_sup_brake_deadtime_running
+ * TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER >= Tcs0_4wd_brake_deadtime_thr
+ * 
+ * d:
+ * case Tc4wd_sup_brake_deadtime_running
+ * TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE = True
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER < Tcs0_4wd_brake_deadtime_thr
+ * 
+ * e:
+ * case Tc4wd_sup_brake_deadtime_elapsed
+ * TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE == False
+ * 
+ * f:
+ * case Tc4wd_sup_brake_deadtime_elapsed
+ * TC4WD_SUPPORT.STATE_INFOS.S_BRAKE_ACTIVE == True
+ * 
+ * g:
+ * case default
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.STATES.BRAKE_DEADTIME_LOGIC == Tc4wd_sup_brake_deadtime_running 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.BRAKE_DEADTIME_LOGIC == Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.BRAKE_DEADTIME_LOGIC == Tc4wd_sup_brake_deadtime_elapsed 
+ * 
+ * d:
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER++ 
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.BRAKE_DEADTIME_LOGIC = Tc4wd_sup_default 
+ * 
+ * f:
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_DEADTIME_COUNTER 
+ * 
+ * g:
+ * TC4WD_SUPPORT.EVENTS.E_DEFAULT == True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_03
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	case Tc4wd_sup_brake_circle_dk
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	case Tc4wd_sup_brake_circle_dk
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
-*	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-*	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-*	Get_tcs_vehicle_braking() = False
-*	Get_vsupp_brk_disabled() = False
-*	TCS_HCU_TEMPERATURE > -150
-*	Get_tcs_hcu_temp_avail() == True
-*	bus_clutch_signal.INFO.QUALIFIER = False
-*
-**	case Tc4wd_sup_brake_circle_dk
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
-*
-**	case Tc4wd_sup_brake_circle_dk
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = False
-*	Get_tcs_vehicle_braking() = True
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = False	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk_zero	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_dk_zero	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * case Tc4wd_sup_brake_circle_dk
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
+ * 
+ * b:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * c:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * case Tc4wd_sup_brake_circle_dk
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
+ * TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+ * TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+ * Get_tcs_vehicle_braking() = False
+ * Get_vsupp_brk_disabled() = False
+ * TCS_HCU_TEMPERATURE > -150
+ * Get_tcs_hcu_temp_avail() == True
+ * bus_clutch_signal.INFO.QUALIFIER = False
+ * 
+ * d:
+ * case Tc4wd_sup_brake_circle_dk
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == True
+ * 
+ * e:
+ * case Tc4wd_sup_brake_circle_dk
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = False
+ * Get_tcs_vehicle_braking() = True
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = False 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk_zero 
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_dk_zero 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_04
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	case Tc4wd_sup_brake_circle_dk_zero
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	case Tc4wd_sup_brake_circle_dk_zero
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-*	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-*	Get_tcs_vehicle_braking() = False
-*	Get_vsupp_brk_disabled() = False
-*	TCS_HCU_TEMPERATURE > -150
-*	Get_tcs_hcu_temp_avail() == True
-*	bus_clutch_signal.INFO.QUALIFIER = False
-*
-**	case Tc4wd_sup_brake_circle_dk_zero
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*	Get_tcs_vehicle_braking() = True
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == False	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk_zero	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * case Tc4wd_sup_brake_circle_dk_zero
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * 
+ * b:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * c:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * case Tc4wd_sup_brake_circle_dk_zero
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+ * TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+ * Get_tcs_vehicle_braking() = False
+ * Get_vsupp_brk_disabled() = False
+ * TCS_HCU_TEMPERATURE > -150
+ * Get_tcs_hcu_temp_avail() == True
+ * bus_clutch_signal.INFO.QUALIFIER = False
+ * 
+ * d:
+ * case Tc4wd_sup_brake_circle_dk_zero
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * Get_tcs_vehicle_braking() = True
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == False 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk_zero 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_05
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	case Tc4wd_sup_brake_circle_dk_zero
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	case Tc4wd_sup_brake_circle_sk
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*	Get_tcs_vehicle_braking() = False
-*	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-*	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-*	Get_vsupp_brk_disabled() = False
-*	TCS_HCU_TEMPERATURE > -150
-*	Get_tcs_hcu_temp_avail() == True
-*	bus_clutch_signal.INFO.QUALIFIER = False
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-*
-**	case Tc4wd_sup_brake_circle_sk
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*	Get_tcs_vehicle_braking() = True
-*
-**	case Tc4wd_sup_brake_circle_sk
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = False
-*	Get_tcs_vehicle_braking() = True
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == False	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_dk	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_dk_zero	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk_zero	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * case Tc4wd_sup_brake_circle_dk_zero
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * 
+ * b:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * c:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * case Tc4wd_sup_brake_circle_sk
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * Get_tcs_vehicle_braking() = False
+ * TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+ * TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+ * Get_vsupp_brk_disabled() = False
+ * TCS_HCU_TEMPERATURE > -150
+ * Get_tcs_hcu_temp_avail() == True
+ * bus_clutch_signal.INFO.QUALIFIER = False
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+ * 
+ * d:
+ * case Tc4wd_sup_brake_circle_sk
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * Get_tcs_vehicle_braking() = True
+ * 
+ * e:
+ * case Tc4wd_sup_brake_circle_sk
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = False
+ * Get_tcs_vehicle_braking() = True
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == False 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_dk 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_dk_zero 
+ * 
+ * e:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk_zero 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_06
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	case Tc4wd_sup_brake_circle_sk_zero
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	case Tc4wd_sup_brake_circle_sk_zero
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*	Get_tcs_vehicle_braking() = False
-*	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-*	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-*	Get_vsupp_brk_disabled() = False
-*	TCS_HCU_TEMPERATURE > -150
-*	Get_tcs_hcu_temp_avail() == True
-*	bus_clutch_signal.INFO.QUALIFIER = False
-*
-**	case Tc4wd_sup_brake_circle_sk_zero
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*	Get_tcs_vehicle_braking() = True
-*
-**	case default
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == False	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_dk	
-*	
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_dk_zero	
-*	
-**	TC4WD_SUPPORT.EVENTS.E_DEFAULT = True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * case Tc4wd_sup_brake_circle_sk_zero
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * 
+ * b:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * c:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * case Tc4wd_sup_brake_circle_sk_zero
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * Get_tcs_vehicle_braking() = False
+ * TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+ * TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+ * Get_vsupp_brk_disabled() = False
+ * TCS_HCU_TEMPERATURE > -150
+ * Get_tcs_hcu_temp_avail() == True
+ * bus_clutch_signal.INFO.QUALIFIER = False
+ * 
+ * d:
+ * case Tc4wd_sup_brake_circle_sk_zero
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * Get_tcs_vehicle_braking() = True
+ * 
+ * e:
+ * case default
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE == False 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_dk 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_dk_zero 
+ * 
+ * e:
+ * TC4WD_SUPPORT.EVENTS.E_DEFAULT = True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_01
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	case default
-*
-**	case Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_CLUTCH = True
-*
-**	case Tc4wd_sup_clutch_controlled
-*	TC4WD_SUPPORT.EVENTS.E_CLUTCH = True
-*	Get_pulled_handbr_recognized() = True
-*
-**	case Tc4wd_sup_clutch_controlled
-*	Get_pulled_handbr_recognized() = False
-*	bus_clutch_signal.INFO.QUALIFIER = False
-*	Get_vsupp_clu_disabled() = False
-*	Get_tcs_long_sens_available() = True
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	TCS_RESISTANCE_ROAD < Tcs0_4wd_resist_cond_clutch
-*	TC4WD_SUPPORT.COUNTERS.CLUTCH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.CLUTCH_MAX_TIME
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.EVENTS.E_DEFAULT == True	
-*	
-**	TC4WD_SUPPORT.STATES.CLUTCH_LOGIC == Tc4wd_sup_clutch_controlled	
-*	
-**	TC4WD_SUPPORT.STATES.CLUTCH_LOGIC == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.COUNTERS.CLUTCH_COUNTER++	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * case default
+ * 
+ * b:
+ * case Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_CLUTCH = True
+ * 
+ * c:
+ * case Tc4wd_sup_clutch_controlled
+ * TC4WD_SUPPORT.EVENTS.E_CLUTCH = True
+ * Get_pulled_handbr_recognized() = True
+ * 
+ * d:
+ * case Tc4wd_sup_clutch_controlled
+ * Get_pulled_handbr_recognized() = False
+ * bus_clutch_signal.INFO.QUALIFIER = False
+ * Get_vsupp_clu_disabled() = False
+ * Get_tcs_long_sens_available() = True
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * TCS_RESISTANCE_ROAD < Tcs0_4wd_resist_cond_clutch
+ * TC4WD_SUPPORT.COUNTERS.CLUTCH_COUNTER > TC4WD_SUPPORT.THRESHOLDS.CLUTCH_MAX_TIME
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.EVENTS.E_DEFAULT == True 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.CLUTCH_LOGIC == Tc4wd_sup_clutch_controlled 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.CLUTCH_LOGIC == Tc4wd_sup_default 
+ * 
+ * d:
+ * TC4WD_SUPPORT.COUNTERS.CLUTCH_COUNTER++ 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
- Test case TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_02
+ Test case TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_01
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	case Tc4wd_sup_default
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
-*
-**	case Tc4wd_sup_clutch_deadtime_running
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-*
-**	case Tc4wd_sup_clutch_deadtime_running
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
-*	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
-*	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
-*
-**	case Tc4wd_sup_clutch_deadtime_running
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
-*	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-*	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-*	TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER >= Tcs0_4wd_clutch_deadtime_thr
-*
-**	case Tc4wd_sup_clutch_deadtime_running
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
-*	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-*	TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
-*	TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER < Tcs0_4wd_clutch_deadtime_thr
-*
-**	case Tc4wd_sup_clutch_deadtime_elapsed
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-*
-**	case Tc4wd_sup_clutch_deadtime_elapsed
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
-*
-**	case default
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.STATES.CLUTCH_DEADTIME_LOGIC == Tc4wd_sup_clutch_deadtime_running	
-*	
-**	TC4WD_SUPPORT.STATES.CLUTCH_DEADTIME_LOGIC == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER = 0	
-*	
-**	TC4WD_SUPPORT.STATES.CLUTCH_DEADTIME_LOGIC = Tc4wd_sup_clutch_deadtime_elapsed	
-*	
-**	TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER++	
-*	
-**	
-**	
-**	TC4WD_SUPPORT.EVENTS.E_DEFAULT == True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * case Tc4wd_sup_default
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
+ * 
+ * b:
+ * case Tc4wd_sup_clutch_deadtime_running
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+ * 
+ * c:
+ * case Tc4wd_sup_clutch_deadtime_running
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
+ * TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
+ * TC4WD_SUPP_REQU.CLUTCH_TORQUE = 0
+ * 
+ * d:
+ * case Tc4wd_sup_clutch_deadtime_running
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
+ * TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+ * TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+ * TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER >= Tcs0_4wd_clutch_deadtime_thr
+ * 
+ * e:
+ * case Tc4wd_sup_clutch_deadtime_running
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
+ * TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+ * TC4WD_SUPP_REQU.CLUTCH_TORQUE = 200
+ * TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER < Tcs0_4wd_clutch_deadtime_thr
+ * 
+ * f:
+ * case Tc4wd_sup_clutch_deadtime_elapsed
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+ * 
+ * g:
+ * case Tc4wd_sup_clutch_deadtime_elapsed
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = True
+ * 
+ * h:
+ * case default
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.STATES.CLUTCH_DEADTIME_LOGIC == Tc4wd_sup_clutch_deadtime_running 
+ * 
+ * b:
+ * TC4WD_SUPPORT.STATES.CLUTCH_DEADTIME_LOGIC == Tc4wd_sup_default 
+ * 
+ * c:
+ * TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER = 0 
+ * 
+ * d:
+ * TC4WD_SUPPORT.STATES.CLUTCH_DEADTIME_LOGIC = Tc4wd_sup_clutch_deadtime_elapsed 
+ * 
+ * e:
+ * TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER++ 
+ * 
+ * f:
+ * TC4WD_SUPPORT.STATES.CLUTCH_DEADTIME_LOGIC == Tc4wd_sup_default 
+ * 
+ * g:
+ * TC4WD_SUPPORT.COUNTERS.CLUTCH_DEADTIME_COUNTER++ 
+ * 
+ * h:
+ * TC4WD_SUPPORT.EVENTS.E_DEFAULT == True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_CHECK_STATE_REFERENCE_Test_01
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	Get_driver_req_idle_qf() = True
-*	Get_driver_req_idle((uint16)Tcs0_pedal_pos_idle_thr) = 1u
-*	case Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_FAILURE = True
-*
-**	case Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_FAILURE = False
-*
-**	case Tc4wd_sup_in_doubt
-*	TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET = True
-*
-**	case Tc4wd_sup_in_doubt
-*	TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET = False
-*
-**	case default
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.STATES.OBERSERVER_OF_REFERENCE == Tc4wd_sup_in_doubt	
-*	
-**	TC4WD_SUPPORT.REF_FAILURE == (wheel_velocity_t)MAX(TC4WD_SUPPORT.REF_FAILURE, 0)	
-*	
-**	TC4WD_SUPPORT.STATES.OBERSERVER_OF_REFERENCE == Tc4wd_sup_default	
-*	
-**	TC4WD_SUPPORT.REF_FAILURE == (wheel_velocity_t)MAX(TC4WD_SUPPORT.REF_FAILURE, -Tcs0_4wd_max_ref_failure)	
-*	
-**	TC4WD_SUPPORT.EVENTS.E_DEFAULT = True	
-*	
-* @type
-*
-* @regression
-*
-* @integration
-*
-* @validates
-*
-*
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * Get_driver_req_idle_qf() = True
+ * Get_driver_req_idle((uint16)Tcs0_pedal_pos_idle_thr) = 1u
+ * case Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_FAILURE = True
+ * 
+ * b:
+ * case Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_FAILURE = False
+ * 
+ * c:
+ * case Tc4wd_sup_in_doubt
+ * TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET = True
+ * 
+ * d:
+ * case Tc4wd_sup_in_doubt
+ * TC4WD_SUPPORT.EVENTS.E_FAILURE_RESET = False
+ * 
+ * e:
+ * case default
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.STATES.OBERSERVER_OF_REFERENCE == Tc4wd_sup_in_doubt 
+ * 
+ * b:
+ * TC4WD_SUPPORT.REF_FAILURE == (wheel_velocity_t)MAX(TC4WD_SUPPORT.REF_FAILURE, 0) 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.OBERSERVER_OF_REFERENCE == Tc4wd_sup_default 
+ * 
+ * d:
+ * TC4WD_SUPPORT.REF_FAILURE == (wheel_velocity_t)MAX(TC4WD_SUPPORT.REF_FAILURE, -Tcs0_4wd_max_ref_failure) 
+ * 
+ * e:
+ * TC4WD_SUPPORT.EVENTS.E_DEFAULT = True 
+ * 
+ * @type
+ *
+ * @regression
+ *
+ * @integration
+ *
+ * @validates
+ *
+ *
 **/
 
 
  Test case TC4WD_SUPPORT_POST_PROCESSING_Test_01
 ============================================================
 /**
-* @brief
-*
-* @description
-*
-* @author
-*	
-*
-* @preconditions
-**	TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk
-*	case default in function TC4WD_SUPPORT_CHECK_STATE_BRAKE() 
-*	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	case Tc4wd_sup_brake_circle_dk_zero
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*	Get_tcs_vehicle_braking() = False
-*	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-*	Get_vsupp_brk_disabled() = False
-*	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-*	TCS_HCU_TEMPERATURE > -150
-*	Get_tcs_hcu_temp_avail() == True
-*	bus_clutch_signal.INFO.QUALIFIER = False
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
-*	TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
-*
-**	case Tc4wd_sup_brake_perm
-*	TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
-*	TC4WD_SUPPORT.EVENTS.E_BRAKE = False
-*	case Tc4wd_sup_brake_circle_sk_zero
-*	TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
-*	Get_tcs_vehicle_braking() = False
-*	TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
-*	Get_vsupp_brk_disabled() = False
-*	TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
-*	TCS_HCU_TEMPERATURE > -150
-*	Get_tcs_hcu_temp_avail() == True
-*	bus_clutch_signal.INFO.QUALIFIER = False
-*	TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
-*
-**	case Tc4wd_sup_default
-*	TC4WD_SUPPORT.EVENTS.E_ENGINE = True
-*
-**	case Tc4wd_sup_engine_controlled
-*	Get_vsupp_eng_disabled() = False
-*	Get_tcs_long_sens_available() = True
-*	Get_driving_direction_valid() = True
-*	Get_reverse_driving_info() = False
-*	Get_ayc_reverse_movement() = False
-*	Get_ayc_reverse_det_possible() = False
-*	Get_sensor_fault_wh1() = False
-*	Get_sensor_fault_wh2() = False
-*	Get_sensor_fault_wh3() = False
-*	Get_sensor_fault_wh4() = False
-*	TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
-*	Get_tc4supp_engine_active() = True
-*	TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
-*
-* @events
-*	Calling TC4WD_SUPPORT_ENTRY() function
-*
-* @results
-**	TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default	
-*	
-**	 Set_tc4supp_req_brk_press(WhFr, (brake_pressure_t)Tcs0_4wd_support_pressure_front)	
-*	Set_tc4supp_req_brk_press(WhRl, (brake_pressure_t)Tcs0_4wd_support_pressure_rear)	
-*	TC4WD_SUPP_CTRL.BRAKE_ACTIVE = True	
-*	
-**	
-**	
-**	TC4WD_SUPP_CTRL.ENGINE_ACTIVE = True	
-*	
-**	Calling TC4WD_SUPPORT_ENTRY() function	
-*	
+ * @brief
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATES.BRAKE_ACTIVE_CIRCLE = Tc4wd_sup_brake_circle_sk
+ * case default in function TC4WD_SUPPORT_CHECK_STATE_BRAKE() 
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * b:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * case Tc4wd_sup_brake_circle_dk_zero
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * Get_tcs_vehicle_braking() = False
+ * TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+ * Get_vsupp_brk_disabled() = False
+ * TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+ * TCS_HCU_TEMPERATURE > -150
+ * Get_tcs_hcu_temp_avail() == True
+ * bus_clutch_signal.INFO.QUALIFIER = False
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+ * 
+ * c:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_unknown
+ * TC4WD_SUPPORT.EVENTS.E_DECIDER_DONE = True
+ * 
+ * d:
+ * case Tc4wd_sup_brake_perm
+ * TC4WD_SUPPORT.COUNTERS.BRAKE_CYCLE_COUNTER != Tcs0_4wd_brake_cycle_time
+ * TC4WD_SUPPORT.EVENTS.E_BRAKE = False
+ * case Tc4wd_sup_brake_circle_sk_zero
+ * TC4WD_SUPPORT.EVENTS.E_DK_SK_CHANGE = True
+ * Get_tcs_vehicle_braking() = False
+ * TC4WD_SUPPORT.BRAKE_TORQUE_REMAINED > 0
+ * Get_vsupp_brk_disabled() = False
+ * TC4WD_SUPPORT.CONDITIONS.VALID_FORWARD_DRIVING = True
+ * TCS_HCU_TEMPERATURE > -150
+ * Get_tcs_hcu_temp_avail() == True
+ * bus_clutch_signal.INFO.QUALIFIER = False
+ * TC4WD_SUPPORT.STATE_INFOS.S_CLUTCH_ACTIVE = False
+ * 
+ * e:
+ * case Tc4wd_sup_default
+ * TC4WD_SUPPORT.EVENTS.E_ENGINE = True
+ * 
+ * f:
+ * case Tc4wd_sup_engine_controlled
+ * Get_vsupp_eng_disabled() = False
+ * Get_tcs_long_sens_available() = True
+ * Get_driving_direction_valid() = True
+ * Get_reverse_driving_info() = False
+ * Get_ayc_reverse_movement() = False
+ * Get_ayc_reverse_det_possible() = False
+ * Get_sensor_fault_wh1() = False
+ * Get_sensor_fault_wh2() = False
+ * Get_sensor_fault_wh3() = False
+ * Get_sensor_fault_wh4() = False
+ * TC4WD_SUPPORT.COUNTERS.ENGINE_COUNTER < TC4WD_SUPPORT.THRESHOLDS.ENGINE_MAX_TIME
+ * Get_tc4supp_engine_active() = True
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION = Tc4wd_sup_act_doubt_ref_high
+ *
+ * @events
+ * Calling TC4WD_SUPPORT_ENTRY() function
+ *
+ * @results
+ * a:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default 
+ * 
+ * b:
+ *  Set_tc4supp_req_brk_press(WhFr, (brake_pressure_t)Tcs0_4wd_support_pressure_front) 
+ * Set_tc4supp_req_brk_press(WhRl, (brake_pressure_t)Tcs0_4wd_support_pressure_rear) 
+ * TC4WD_SUPP_CTRL.BRAKE_ACTIVE = True 
+ * 
+ * c:
+ * TC4WD_SUPPORT.STATES.BRAKE_LOGIC == Tc4wd_sup_default 
+ * 
+ * d:
+ *  Set_tc4supp_req_brk_press(WhFr, (brake_pressure_t)Tcs0_4wd_support_pressure_front) 
+ * Set_tc4supp_req_brk_press(WhRl, (brake_pressure_t)Tcs0_4wd_support_pressure_rear) 
+ * TC4WD_SUPP_CTRL.BRAKE_ACTIVE = True 
+ * 
+ * e:
+ * TC4WD_SUPP_CTRL.ENGINE_ACTIVE = True 
+ * 
+ * f:
+ * Calling TC4WD_SUPPORT_ENTRY() function 
+ * 
