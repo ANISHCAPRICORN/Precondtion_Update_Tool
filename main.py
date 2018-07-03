@@ -10,13 +10,13 @@ import re, sys
 from Tkinter import *
 import Tkinter, Tkconstants, tkFileDialog, tkMessageBox
 import os
-
+import subprocess
 
 Str = '''*********************************************************
-*   Program      :   Doxygen Comments Generator          
-*   Version      :   1.1                               
+*   Program       :   Doxygen Comments Generator          
+*   Version         :   1.1                               
 *   Developer    :   Anish Kumar                       
-*   Date         :   25-June-2018                                           
+*   Date             :   25-June-2018                                           
 *********************************************************\
 '''
 COU_TEST_Count = 0
@@ -33,7 +33,7 @@ Annotation_missing = 0
 Annotation_missed_in = []
 alph = 98
 alph1 = 98
-
+filepath = "NULL"
 
 def event_updater():
     global Event_Print_Flag
@@ -66,15 +66,15 @@ def generator():
     global COU_TEST_Count, ASSERT_Missing, Missed_Asserts, Order_Check_Flag, TEST_CASE_Name, COU_ASSERT_Count
     global dest, COU_CALL_Flag, COU_TEST_Flag, COU_SET_Count, COU_CALL_Count, Event_Print_Flag, Assert_Print_Flag
     global Num_Lines, Name
-    global Name, E1, Annotation_missing, alph, alph1, found
+    global Name, E1, Annotation_missing, alph, alph1, found, filepath
     First_Time = 0
     Name = E1.get()
-    dest = open("output/Doxygen_Gen.txt", "w")
+    dest = open("Doxygen_Gen.txt", "w")
 
     # Loop Starts here
     with open(filepath) as fp:
         # Reading Line by Line
-        dest.write(Str)
+        # dest.write(Str)
         line = fp.readline()
         while line:
             ch = (line.strip())
@@ -96,7 +96,7 @@ def generator():
 
                 results_updater()
                 if First_Time:
-                    dest.write("\n * @type\n *\n * @regression\n *\n * @integration\n *\n * @validates\n *\n *")
+                    dest.write("\n * @type\n * Elementary Comparison Test (ECT)\n *\n * @regression\n * No\n *\n * @integration\n * No\n *\n * @validates\n *\n *")
                 First_Time = 1
                 dat = (ch.strip())
                 dat1 = (re.search('"(.+?)"', dat))
@@ -199,7 +199,7 @@ def generator():
 
     Missed_Asserts = set(Missed_Asserts)
     if Annotation_missing > 0:
-        error("Annotation Missing\nPlease Update Annotations properly\n{}".format(Annotation_missed_in))
+        error("Annotation Missing\nPlease Update Annotations properly\n{}\nOutput may incomplete..!!".format(Annotation_missed_in))
 
 
     ''' 
@@ -207,9 +207,9 @@ def generator():
                         SUMMARIZED RESULT
     ==============================================================================
     '''
-    print "Test Cases = ", COU_TEST_Count, "\nTotal SET = ", COU_SET_Count, "\nTotal CALL = ", COU_CALL_Count, \
-        "\nTotal ASSERT = ", COU_ASSERT_Count, "\nTotal Line Num = ", Num_Lines, "\nAssert Missing : ", ASSERT_Missing, \
-        "\nMissed in : ", "\n".join(Missed_Asserts)
+    # print "Test Cases = ", COU_TEST_Count, "\nTotal SET = ", COU_SET_Count, "\nTotal CALL = ", COU_CALL_Count, \
+    #     "\nTotal ASSERT = ", COU_ASSERT_Count, "\nTotal Line Num = ", Num_Lines, "\nAssert Missing : ", ASSERT_Missing, \
+    #     "\nMissed in : ", "\n".join(Missed_Asserts)
     Str1 = '''
                                   
 ========================================================
@@ -229,27 +229,33 @@ def generator():
                                                                   COU_ASSERT_Count,Annotation_missing, Annotation_missed_in, ASSERT_Missing,
                                                                   "\n\t\t\t\t\t\t\t\t\t".join(Missed_Asserts))
 
+    dest.write(''' 
+    
+    ==============================================================================
+                                        EOF
+    ==============================================================================
+    ''')
     dest.close()
-    dest = open("output/Doxygen_Gen.txt", "r")
+    dest = open("Doxygen_Gen.txt", "r")
     contents = dest.readlines()
     dest.close()
-    contents.insert(6, Str1)
-    dest = open("output/Doxygen_Gen.txt", "w")
+    contents.insert(0, Str1)
+    dest = open("Doxygen_Gen.txt", "w")
     contents = "".join(contents)
     dest.write(contents)
     fp.close()
     dest.close()
-    T = Text(root, height=2, width=30)
-    T.pack(pady = 20)
-    T.insert(END, "Generation Finished !\nPlease close this window !")
-
+    # T = Text(root, height=2, width=30)
+    # T.pack(pady = 20)
+    # T.insert(END, "Generation Finished !\nPlease close this window !")
+    #
 
 # def quit():
 #     sys.exit()
 #
 
 def gui_main():
-    global root, FileChoose, Name, E1
+    global root, FileChoose, Name, E1, filepath
     root = Tk()
     root.title('Doxygen Generator')
     root.resizable(0, 0)
@@ -309,17 +315,19 @@ def error(str):
 
 
 def choose_file():
-    global filepath, root, dest
+    global filepath , root, dest
 
     root.filename = tkFileDialog.askopenfilename(initialdir="/", title="Select file",
-                                                 filetypes=(("text files", "*.*"), ("all files", "*.*")))
+                                                 filetypes=(("text files", "*.c"), ("all files", "*.*")))
     filepath = root.filename
     generator()
+    root.destroy()
 
 
 if __name__ == '__main__':
     gui_main()
-    osCommandString = "notepad.exe output/Doxygen_Gen.txt"
-    os.system(osCommandString)
+    if filepath != "NULL":
+        osCommandString = "notepad.exe Doxygen_Gen.txt"
+        subprocess.call(osCommandString, shell=False)
 
 
