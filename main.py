@@ -11,6 +11,7 @@ from Tkinter import *
 import Tkinter, Tkconstants, tkFileDialog, tkMessageBox
 import os
 import subprocess
+from collections import Counter
 
 Str = '''*********************************************************
 *   Program       :   Doxygen Comments Generator          
@@ -23,6 +24,7 @@ COU_TEST_Count = 0
 COU_TEST_Flag, COU_CALL_Flag, Assert_Print_Flag, Event_Print_Flag = 0, 0, 0, 0
 ASSERT_Missing = 0
 Missed_Asserts = []
+Missed_Asserts_Final = []
 Asserts = []
 Events = []
 Order_Check_Flag = 0  #
@@ -34,6 +36,10 @@ Annotation_missed_in = []
 alph = 98
 alph1 = 98
 filepath = "NULL"
+error_1 = 0
+COU_LOG = {}
+COU_LOG_List = []
+Missed_Asserts_Dict = {}
 
 def event_updater():
     global Event_Print_Flag
@@ -65,139 +71,166 @@ def results_updater():
 def generator():
     global COU_TEST_Count, ASSERT_Missing, Missed_Asserts, Order_Check_Flag, TEST_CASE_Name, COU_ASSERT_Count
     global dest, COU_CALL_Flag, COU_TEST_Flag, COU_SET_Count, COU_CALL_Count, Event_Print_Flag, Assert_Print_Flag
-    global Num_Lines, Name
-    global Name, E1, Annotation_missing, alph, alph1, found, filepath
+    global Num_Lines, Name, COU_LOG, COU_LOG_List, Missed_Asserts_Dict, Missed_Asserts_Final
+    global Name, E1, Annotation_missing, alph, alph1, found, filepath, error_1
     First_Time = 0
     Name = E1.get()
     dest = open("Doxygen_Gen.txt", "w")
+    try:
+        # Loop Starts here
+        with open(filepath) as fp:
+            # Reading Line by Line
+            # dest.write(Str)
+            line = fp.readline()
+            while line:
+                ch = (line.strip())
+                ''' 
+                ==============================================================================
+                                    COU_TEST IDENTIFICATION
+                ==============================================================================
+                '''
+                while ch.find("COU_TEST") == 0:
+                    COU_TEST_Count += 1
+                    COU_TEST_Flag = 1
+                    alph = 98
+                    if COU_CALL_Flag:
+                        COU_CALL_Flag = 0
+                        ASSERT_Missing += 1
+                        Missed_Asserts.append(TEST_CASE_Name)  # Assert missing finding logic
 
-    # Loop Starts here
-    with open(filepath) as fp:
-        # Reading Line by Line
-        # dest.write(Str)
-        line = fp.readline()
-        while line:
-            ch = (line.strip())
-            ''' 
-            ==============================================================================
-                                COU_TEST IDENTIFICATION
-            ==============================================================================
-            '''
-            while ch.find("COU_TEST") == 0:
-                COU_TEST_Count += 1
-                COU_TEST_Flag = 1
-                alph = 98
-                if COU_CALL_Flag:
-                    COU_CALL_Flag = 0
-                    ASSERT_Missing += 1
-                    Missed_Asserts.append(TEST_CASE_Name)  # Assert missing finding logic
+                    event_updater()
 
-                event_updater()
-
-                results_updater()
-                if First_Time:
-                    dest.write("\n * @type\n * Elementary Comparison Test (ECT)\n *\n * @regression\n * No\n *\n * @integration\n * No\n *\n * @validates\n *\n *")
-                First_Time = 1
-                dat = (ch.strip())
-                dat1 = (re.search('"(.+?)"', dat))
-                if dat1:
-                    TEST_CASE_Name = dat1.group(1)
+                    results_updater()
+                    if First_Time:
+                        dest.write("\n * @type\n * Elementary Comparison Test (ECT)\n *\n * @regression\n * No\n *\n * @integration\n * No\n *\n * @validates\n *\n *")
+                    First_Time = 1
+                    dat = (ch.strip())
+                    dat1 = (re.search('"(.+?)"', dat))
+                    if dat1:
+                        TEST_CASE_Name = dat1.group(1)
+                    else:
+                        Annotation_missing += 1
+                        Annotation_missed_in.append(Num_Lines+1)
+                    if Order_Check_Flag == 0:  # Order_Check_Flag = zero  Means Executing after COU_ASSERT
+                        dest.write("\n**/\n\n\n ")
+                        dest.write(TEST_CASE_Name)
+                        dest.write("\n============================================================\n")
+                        Order_Check_Flag = 1
+                        dest.write("/**\n")
+                        dest.write(" * @brief\n *\n *")
+                        dest.write(" @description\n *\n *")
+                        dest.write(" @author\n * ")
+                        dest.write(Name)
+                        dest.write("\n *\n")
+                        dest.write(" * @preconditions\n * {}:\n".format(chr(97)))
+                    break
                 else:
-                    Annotation_missing += 1
-                    Annotation_missed_in.append(Num_Lines+1)
-                if Order_Check_Flag == 0:  # Order_Check_Flag = zero  Means Executing after COU_ASSERT
-                    dest.write("\n**/\n\n\n ")
-                    dest.write(TEST_CASE_Name)
-                    dest.write("\n============================================================\n")
-                    Order_Check_Flag = 1
-                    dest.write("/**\n")
-                    dest.write(" * @brief\n *\n *")
-                    dest.write(" @description\n *\n *")
-                    dest.write(" @author\n * ")
-                    dest.write(Name)
-                    dest.write("\n *\n")
-                    dest.write(" * @preconditions\n * {}:\n".format(chr(97)))
-                break
-            else:
-                pass
-            ''' 
-            ==============================================================================
-                                COU_SET IDENTIFICATION
-            ==============================================================================
-            '''
-            if ch.find("COU_SET") == 0:
-                if COU_CALL_Flag:
-                    COU_CALL_Flag = 0
-                    ASSERT_Missing += 1
-                    Missed_Asserts.append(TEST_CASE_Name)  # Assert missing finding logic
-                COU_SET_Count += 1
-                if Order_Check_Flag == 0 and COU_TEST_Flag:
+                    pass
+                ''' 
+                ==============================================================================
+                                    COU_SET IDENTIFICATION
+                ==============================================================================
+                '''
+                if ch.find("COU_SET") == 0:
+                    if COU_CALL_Flag:
+                        COU_CALL_Flag = 0
+                        ASSERT_Missing += 1
+                        Missed_Asserts.append(TEST_CASE_Name)  # Assert missing finding logic
+                    COU_SET_Count += 1
+                    if Order_Check_Flag == 0 and COU_TEST_Flag:
 
-                    dest.write(" * \n * {}:\n".format(chr(alph)))
-                    alph += 1
+                        dest.write(" * \n * {}:\n".format(chr(alph)))
+                        alph += 1
+                        Order_Check_Flag = 1
+                        Asserts.append('\n * {}:\n *'.format(chr(alph1)))
+                        alph1 += 1
+                    dat = (ch.strip())
+                    dat1 = re.search('"(.+?)"', dat)
+                    if COU_TEST_Flag:                   # Omiting checking SET before starting Test cases
+                        if dat1:
+                            found = dat1.group(1)
+                        else:
+                            Annotation_missing += 1
+                            Annotation_missed_in.append(Num_Lines+1)
+                        dest.write(' * ')
+                        dest.write(found)
+                        dest.write('\n')
+                        ''' 
+                        ==============================================================================
+                                            COU_CALL IDENTIFICATION
+                        ==============================================================================
+                        '''
+                elif ch.find("COU_CALL") == 0:
+                    COU_CALL_Count += 1
                     Order_Check_Flag = 1
-                    Asserts.append('\n * {}:\n *'.format(chr(alph1)))
-                    alph1 += 1
-                dat = (ch.strip())
-                dat1 = re.search('"(.+?)"', dat)
-                if COU_TEST_Flag:                   # Omiting checking SET before starting Test cases
+                    COU_CALL_Flag = 1
+                    Event_Print_Flag = 1
+                    dat = (ch.strip())
+                    dat1 = re.search('"(.+?)"', dat)
                     if dat1:
                         found = dat1.group(1)
                     else:
                         Annotation_missing += 1
                         Annotation_missed_in.append(Num_Lines+1)
-                    dest.write(' * ')
-                    dest.write(found)
-                    dest.write('\n')
+                    Events.append(found)
                     ''' 
                     ==============================================================================
-                                        COU_CALL IDENTIFICATION
+                                        COU_ASSERT IDENTIFICATION
                     ==============================================================================
                     '''
-            elif ch.find("COU_CALL") == 0:
-                COU_CALL_Count += 1
-                Order_Check_Flag = 1
-                COU_CALL_Flag = 1
-                Event_Print_Flag = 1
-                dat = (ch.strip())
-                dat1 = re.search('"(.+?)"', dat)
-                if dat1:
-                    found = dat1.group(1)
-                else:
-                    Annotation_missing += 1
-                    Annotation_missed_in.append(Num_Lines+1)
-                Events.append(found)
-                ''' 
-                ==============================================================================
-                                    COU_ASSERT IDENTIFICATION
-                ==============================================================================
-                '''
-            elif ch.find("COU_ASSERT") == 0:
-                COU_ASSERT_Count += 1
-                Order_Check_Flag = 0
-                COU_CALL_Flag = 0
+                elif ch.find("COU_ASSERT") == 0:
+                    COU_ASSERT_Count += 1
+                    Order_Check_Flag = 0
+                    COU_CALL_Flag = 0
 
-                dat = (ch.strip())
-                dat1 = re.search('"(.+?)"', dat)
-                # current_assert_list = set(Asserts)
-                if dat1:
-                    found = dat1.group(1)
-                else:
-                    Annotation_missing += 1
-                    Annotation_missed_in.append(Num_Lines+1)
-                # if found not in current_assert_list:
-                Asserts.append(found)
-                Asserts.append('\n *')
-                Assert_Print_Flag = 1
-            else:
-                pass
+                    dat = (ch.strip())
+                    dat1 = re.search('"(.+?)"', dat)
+                    # current_assert_list = set(Asserts)
+                    if dat1:
+                        found = dat1.group(1)
+                    else:
+                        Annotation_missing += 1
+                        Annotation_missed_in.append(Num_Lines+1)
+                    # if found not in current_assert_list:
+                    Asserts.append(found)
+                    Asserts.append('\n *')
+                    Assert_Print_Flag = 1
+                    ''' 
+                    ==============================================================================
+                                        COU_LOG IDENTIFICATION
+                    ==============================================================================
+                    '''
+                elif ch.find("COU_LOG") == 0:
+                    dat = (ch.strip())
+                    dat1 = re.search('"(.+?)"', dat)
+                    if dat1:
+                        found = dat1.group(1)
+                    else:
+                        Annotation_missing += 1
+                        Annotation_missed_in.append(Num_Lines + 1)
+                    # COU_LOG = ({"{}".format(TEST_CASE_Name): found})
+                    COU_LOG_List.append("{}                         {}".format(TEST_CASE_Name, found))
+                    # COU_LOG_List.append(COU_LOG)
 
-            line = fp.readline()
-            Num_Lines += 1
+                else:
+                    pass
+                line = fp.readline()
+                Num_Lines += 1
+                error_1 = 0
+
+    except IOError:
+        error_1 = 1
     event_updater()
     results_updater()
 
-    Missed_Asserts = set(Missed_Asserts)
+    # Missed_Asserts = set(Missed_Asserts)
+    # print(type(Counter(Missed_Asserts)))
+    Missed_Asserts_Dict = dict((Counter(Missed_Asserts)))
+    print(Missed_Asserts_Dict.keys())
+    print(Missed_Asserts_Dict.values())
+    for i in Missed_Asserts_Dict:
+        s = "{}         ---->   {}".format(i,Missed_Asserts_Dict[i])
+        Missed_Asserts_Final.append(s)
     if Annotation_missing > 0:
         error("Annotation Missing\nPlease Update Annotations properly\n{}\nOutput may incomplete..!!".format(Annotation_missed_in))
 
@@ -212,9 +245,10 @@ def generator():
     #     "\nMissed in : ", "\n".join(Missed_Asserts)
     Str1 = '''
                                   
-========================================================
-*                   SUMMARY                            *        
-========================================================
+======================================================================================
+*                                SUMMARY                                                     *        
+======================================================================================
+
 *   Date and Time               : {}
 *   Input File                  : {}                                
 *   Output File                 : {}
@@ -222,13 +256,26 @@ def generator():
 *   Number Of Lines             : {}
 *   Number Of Asserts           : {}
 *   Number of Annotations Missed: {}
-*   Where You Missed Annotation : Line Numbers:\n                                   {}
+*   Where You Missed Annotation : <Line Numbers:>\n                                   {}
 *   Number Of Asserts Missed    : {}
-*   Where You Missed            : {}
-======================================================='''.format(time.asctime(), fp.name, dest.name, COU_TEST_Count, Num_Lines,
-                                                                  COU_ASSERT_Count,Annotation_missing, Annotation_missed_in, ASSERT_Missing,
-                                                                  "\n\t\t\t\t\t\t\t\t\t".join(Missed_Asserts))
+*   Where You Missed            :\n
+ ======================================================================================
+Test Case                                               Num of Asserts                                                     
+=======================================================================================
+{}                                              
+***************************************************************************************\n
 
+*   COU_LOG's                   : 
+======================================================================================
+Test Case                                                           COU_LOG Message
+======================================================================================
+{} 
+****************************************************************************************   
+==================================End Of Summary========================================='''.format(time.asctime(), fp.name, dest.name, COU_TEST_Count, Num_Lines,
+                                                                  COU_ASSERT_Count,Annotation_missing, Annotation_missed_in, ASSERT_Missing,
+                                                                                                    "\n".join(Missed_Asserts_Final), "\n".join((COU_LOG_List)))
+    if Annotation_missing == 0:
+        dest.write("\n * @type\n * Elementary Comparison Test (ECT)\n *\n * @regression\n * No\n *\n * @integration\n * No\n *\n * @validates\n *\n **/")
     dest.write(''' 
     
     ==============================================================================
@@ -245,14 +292,7 @@ def generator():
     dest.write(contents)
     fp.close()
     dest.close()
-    # T = Text(root, height=2, width=30)
-    # T.pack(pady = 20)
-    # T.insert(END, "Generation Finished !\nPlease close this window !")
-    #
 
-# def quit():
-#     sys.exit()
-#
 
 def gui_main():
     global root, FileChoose, Name, E1, filepath
@@ -326,8 +366,11 @@ def choose_file():
 
 if __name__ == '__main__':
     gui_main()
-    if filepath != "NULL":
+    print(COU_LOG_List)
+    if filepath != "NULL" and error_1 == 0:
         osCommandString = "notepad.exe Doxygen_Gen.txt"
         subprocess.call(osCommandString, shell=False)
+    else:
+        error_1 = 0
 
 
