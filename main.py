@@ -15,7 +15,7 @@ from collections import Counter
 
 Str = '''*********************************************************
 *   Program       :   Doxygen Comments Generator          
-*   Version         :   1.1                               
+*   Version         :   1.2                               
 *   Developer    :   Anish Kumar                       
 *   Date             :   25-June-2018                                           
 *********************************************************\
@@ -40,9 +40,11 @@ error_1 = 0
 COU_LOG = {}
 COU_LOG_List = []
 Missed_Asserts_Dict = {}
+Precondn_Str = ""
+
 
 def event_updater():
-    global Event_Print_Flag
+    global Event_Print_Flag, Precondn_Str
     global Events
     if Event_Print_Flag:
         dest.write(" *\n * @events\n *")
@@ -56,7 +58,7 @@ def event_updater():
 
 
 def results_updater():
-    global Assert_Print_Flag
+    global Assert_Print_Flag, Precondn_Str
     global Asserts, alph1
     if Assert_Print_Flag:
         dest.write("\n * @results\n * {}:\n * ".format(chr(97)))
@@ -72,15 +74,13 @@ def generator():
     global COU_TEST_Count, ASSERT_Missing, Missed_Asserts, Order_Check_Flag, TEST_CASE_Name, COU_ASSERT_Count
     global dest, COU_CALL_Flag, COU_TEST_Flag, COU_SET_Count, COU_CALL_Count, Event_Print_Flag, Assert_Print_Flag
     global Num_Lines, Name, COU_LOG, COU_LOG_List, Missed_Asserts_Dict, Missed_Asserts_Final
-    global Name, E1, Annotation_missing, alph, alph1, found, filepath, error_1
+    global Name, E1, Annotation_missing, alph, alph1, found, filepath, error_1, Precondn_Str
     First_Time = 0
     Name = E1.get()
     dest = open("Doxygen_Gen.txt", "w")
     try:
         # Loop Starts here
-        with open(filepath) as fp:
-            # Reading Line by Line
-            # dest.write(Str)
+        with open(filepath, 'r+') as fp:
             line = fp.readline()
             while line:
                 ch = (line.strip())
@@ -99,13 +99,12 @@ def generator():
                         Missed_Asserts.append(TEST_CASE_Name)  # Assert missing finding logic
 
                     event_updater()
-
                     results_updater()
                     if First_Time:
                         dest.write("\n * @type\n * Elementary Comparison Test (ECT)\n *\n * @regression\n * No\n *\n * @integration\n * No\n *\n * @validates\n *\n *")
                     First_Time = 1
                     dat = (ch.strip())
-                    dat1 = (re.search('"(.+?)"', dat))
+                    dat1 = (re.search('\((.+?),', dat))
                     if dat1:
                         TEST_CASE_Name = dat1.group(1)
                     else:
@@ -117,7 +116,7 @@ def generator():
                         dest.write("\n============================================================\n")
                         Order_Check_Flag = 1
                         dest.write("/**\n")
-                        dest.write(" * @brief\n *\n *")
+                        dest.write(" * @brief\n * Test case {}\n *\n *".format(TEST_CASE_Name))
                         dest.write(" @description\n *\n *")
                         dest.write(" @author\n * ")
                         dest.write(Name)
@@ -135,6 +134,7 @@ def generator():
                     if COU_CALL_Flag:
                         COU_CALL_Flag = 0
                         ASSERT_Missing += 1
+                        # print(COU_LOG_List)
                         Missed_Asserts.append(TEST_CASE_Name)  # Assert missing finding logic
                     COU_SET_Count += 1
                     if Order_Check_Flag == 0 and COU_TEST_Flag:
@@ -145,10 +145,12 @@ def generator():
                         Asserts.append('\n * {}:\n *'.format(chr(alph1)))
                         alph1 += 1
                     dat = (ch.strip())
-                    dat1 = re.search('"(.+?)"', dat)
+                    dat1 = re.search('\((.+?),', dat)
+                    dat2 = re.search(',(.+?),',dat)
                     if COU_TEST_Flag:                   # Omiting checking SET before starting Test cases
                         if dat1:
                             found = dat1.group(1)
+                            found += " set to " + dat2.group(1)
                         else:
                             Annotation_missing += 1
                             Annotation_missed_in.append(Num_Lines+1)
@@ -166,28 +168,33 @@ def generator():
                     COU_CALL_Flag = 1
                     Event_Print_Flag = 1
                     dat = (ch.strip())
-                    dat1 = re.search('"(.+?)"', dat)
+                    dat1 = re.search('\((.+?)"', dat)
                     if dat1:
-                        found = dat1.group(1)
+                        found = "Calling Function "
+                        found += dat1.group(1)
+
                     else:
                         Annotation_missing += 1
                         Annotation_missed_in.append(Num_Lines+1)
                     Events.append(found)
                     ''' 
                     ==============================================================================
-                                        COU_ASSERT IDENTIFICATION
+                                        COU_ASSERT_EQUAL IDENTIFICATION
                     ==============================================================================
                     '''
-                elif ch.find("COU_ASSERT") == 0:
+                elif ch.find("COU_ASSERT_EQUAL") == 0:
                     COU_ASSERT_Count += 1
                     Order_Check_Flag = 0
                     COU_CALL_Flag = 0
 
                     dat = (ch.strip())
-                    dat1 = re.search('"(.+?)"', dat)
+                    dat1 = re.search('\((.+?),', dat)
+                    dat2 = re.search(',(.+?)"', dat)
                     # current_assert_list = set(Asserts)
                     if dat1:
-                        found = dat1.group(1)
+                        found = "Check whether the value of "
+                        found += dat1.group(1)
+                        found += " is equal to " + dat2.group(1)
                     else:
                         Annotation_missing += 1
                         Annotation_missed_in.append(Num_Lines+1)
@@ -195,6 +202,30 @@ def generator():
                     Asserts.append(found)
                     Asserts.append('\n *')
                     Assert_Print_Flag = 1
+                    ''' 
+                    ==============================================================================
+                                        COU_ASSERT_NOT_EQUAL IDENTIFICATION
+                    ==============================================================================
+                    '''
+                elif ch.find("COU_ASSERT_NOT_EQUAL") == 0:
+                    COU_ASSERT_Count += 1
+                    Order_Check_Flag = 0
+                    COU_CALL_Flag = 0
+
+                    dat = (ch.strip())
+                    dat1 = re.search('\((.+?),', dat)
+                    dat2 = re.search(',(.+?)"', dat)
+                    if dat1:
+                        found = "Check whether the value of "
+                        found += dat1.group(1)
+                        found += " is not equal to " + dat2.group(1)
+                    else:
+                        Annotation_missing += 1
+                        Annotation_missed_in.append(Num_Lines + 1)
+                    Asserts.append(found)
+                    Asserts.append('\n *')
+                    Assert_Print_Flag = 1
+
                     ''' 
                     ==============================================================================
                                         COU_LOG IDENTIFICATION
@@ -208,9 +239,7 @@ def generator():
                     else:
                         Annotation_missing += 1
                         Annotation_missed_in.append(Num_Lines + 1)
-                    # COU_LOG = ({"{}".format(TEST_CASE_Name): found})
                     COU_LOG_List.append("{}                         {}".format(TEST_CASE_Name, found))
-                    # COU_LOG_List.append(COU_LOG)
 
                 else:
                     pass
@@ -223,26 +252,15 @@ def generator():
     event_updater()
     results_updater()
 
-    # Missed_Asserts = set(Missed_Asserts)
-    # print(type(Counter(Missed_Asserts)))
     Missed_Asserts_Dict = dict((Counter(Missed_Asserts)))
-    print(Missed_Asserts_Dict.keys())
-    print(Missed_Asserts_Dict.values())
+    # print(Missed_Asserts_Dict.keys())
+    # print(Missed_Asserts_Dict.values())
     for i in Missed_Asserts_Dict:
         s = "{}         ---->   {}".format(i,Missed_Asserts_Dict[i])
         Missed_Asserts_Final.append(s)
     if Annotation_missing > 0:
-        error("Annotation Missing\nPlease Update Annotations properly\n{}\nOutput may incomplete..!!".format(Annotation_missed_in))
+        error("Annotation Missing\nPlease Update Annotations properly\n{}".format(Annotation_missed_in))
 
-
-    ''' 
-    ==============================================================================
-                        SUMMARIZED RESULT
-    ==============================================================================
-    '''
-    # print "Test Cases = ", COU_TEST_Count, "\nTotal SET = ", COU_SET_Count, "\nTotal CALL = ", COU_CALL_Count, \
-    #     "\nTotal ASSERT = ", COU_ASSERT_Count, "\nTotal Line Num = ", Num_Lines, "\nAssert Missing : ", ASSERT_Missing, \
-    #     "\nMissed in : ", "\n".join(Missed_Asserts)
     Str1 = '''
                                   
 ======================================================================================
@@ -258,22 +276,15 @@ def generator():
 *   Number of Annotations Missed: {}
 *   Where You Missed Annotation : <Line Numbers:>\n                                   {}
 *   Number Of Asserts Missed    : {}
-*   Where You Missed            :\n
+*   Where You Missed Asserts    :\n
  ======================================================================================
-Test Case                                               Num of Asserts                                                     
+Test Case                                               Num of Asserts  Missed                                                   
 =======================================================================================
 {}                                              
 ***************************************************************************************\n
-
-*   COU_LOG's                   : 
-======================================================================================
-Test Case                                                           COU_LOG Message
-======================================================================================
-{} 
-****************************************************************************************   
 ==================================End Of Summary========================================='''.format(time.asctime(), fp.name, dest.name, COU_TEST_Count, Num_Lines,
                                                                   COU_ASSERT_Count,Annotation_missing, Annotation_missed_in, ASSERT_Missing,
-                                                                                                    "\n".join(Missed_Asserts_Final), "\n".join((COU_LOG_List)))
+                                                                                                    "\n".join(Missed_Asserts_Final))
     if Annotation_missing == 0:
         dest.write("\n * @type\n * Elementary Comparison Test (ECT)\n *\n * @regression\n * No\n *\n * @integration\n * No\n *\n * @validates\n *\n **/")
     dest.write(''' 
@@ -355,7 +366,7 @@ def error(str):
 
 
 def choose_file():
-    global filepath , root, dest
+    global filepath , root, dest, Precondn_Str
 
     root.filename = tkFileDialog.askopenfilename(initialdir="/", title="Select file",
                                                  filetypes=(("text files", "*.c"), ("all files", "*.*")))
@@ -364,9 +375,12 @@ def choose_file():
     root.destroy()
 
 
+def update():
+    pass
+
+
 if __name__ == '__main__':
     gui_main()
-    print(COU_LOG_List)
     if filepath != "NULL" and error_1 == 0:
         osCommandString = "notepad.exe Doxygen_Gen.txt"
         subprocess.call(osCommandString, shell=False)
