@@ -1,33 +1,36 @@
+*********************************************************
+*   Program       :   Doxygen Comments Generator        *
+*   Version       :   1.3                               *
+*   Developer     :   Anish Kumar                       *
+*   Date          :   08-Jul-2018                       *          
+*********************************************************        
 
                                   
-======================================================================================
-*                                SUMMARY                                                     *        
-======================================================================================
+=====================================================================================================
+*                                   SUMMARY                                                                
+*                            Sun Jul 08 23:34:44 2018                                                
+=====================================================================================================
 
-*   Date and Time               : Sat Jul 07 18:29:48 2018
-*   Input File                  : C:/Users/anish/Downloads/U_Anish_WhDyAcSigRe_With_REQf.c                                
-*   Output File                 : Doxygen_Gen.txt
-*   Number Of Test Cases        : 38
-*   Number Of Lines             : 4704
-*   Number Of Asserts           : 190
-*   Number of Annotations Missed: 0
-*   Where You Missed Annotation : <Line Numbers:>
-                                   []
-*   Number Of Asserts Missed    : 3
-*   Where You Missed Asserts    :
+*   Input File                          : C:/Users/anish/Downloads/U_Anish_WhDyAcSigRe_With_REQf.c                                
+*   Output File                         : Doxygen_Gen.txt
+*   Number Of Test Cases                : 38
+*   Number Of Lines                     : 3143
+*   Number Of Asserts                   : 190
+*   Justifications(COU_LOG/COU_PROPERTY): 4
+*   Number Of Asserts Missed            : 3
+*   Where You Missed Asserts            :
 
- ======================================================================================
-Test Case                                               Num of Asserts                                                     
-=======================================================================================
+=====================================================================================================
+Test Case                                               Num of Asserts  Missed                                                   
+=====================================================================================================
 TC4WD_SUPPORT_PRE_PROCESSING_Test_02         ---->   2
-TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1                                              
-***************************************************************************************
+TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1 
+                                            
 
-==================================End Of Summary=========================================
-**/
+====================================== E n d  O f  S u m m a r y ====================================
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_01
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_01 >
 ============================================================
 /**
  * @brief
@@ -71,11 +74,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_02
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_02 >
 ============================================================
 /**
  * @brief
@@ -93,6 +95,8 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  * b:
  * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION set to Tc4wd_sup_act_doubt_unknown
  * ESTIMATED_SLOPE_FILTERED set to  (TC4WD_SUPPORT.ENTRY_SLOPE) - 1
+ * 
+ * c:
  * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION set to Tc4wd_sup_act_pattern_ref_high_gsens
  *
  * @events
@@ -103,6 +107,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  * Check whether the value of TC4WD_SUPPORT.ENTRY_SLOPE is equal to MAX(TC4WD_SUPPORT.ENTRY_SLOPE, ESTIMATED_SLOPE_FILTERED),  
  * 
  * b:
+ *   
+ * 
+ * c:
+ *   
  * 
  * @type
  * Elementary Comparison Test (ECT)
@@ -115,11 +123,31 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- * * GET_WHDYAC_ENGDEC_ACTIVE_SUM_mtc__return set to  True
+ **/
+
+
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_03 >
+============================================================
+/**
+ * @brief
+ * Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_03
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * GET_WHDYAC_ENGDEC_ACTIVE_SUM_mtc__return set to  True
  *
  * @events
  * Calling Function TC4WD_SUPPORT_ENTRY (0, 255), 
  *
+ * @results
+ * a:
+ *   
+ * 
  * @type
  * Elementary Comparison Test (ECT)
  *
@@ -131,7 +159,23 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- * * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION set to ! Tc4wd_sup_act_doubt_ref_low
+ **/
+
+
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_04 >
+============================================================
+/**
+ * @brief
+ * Test case TC4WD_SUPPORT_PRE_PROCESSING_Test_04
+ *
+ * @description
+ *
+ * @author
+ * 
+ *
+ * @preconditions
+ * a:
+ * TC4WD_SUPPORT.STATES.DECIDER_ON_SUPPORT_ACTIVATION set to ! Tc4wd_sup_act_doubt_ref_low
  * ESTIMATED_SLOPE_ACTUAL set to 1500
  * ESTIMATED_SLOPE_FILTERED set to 500
  * Get_ayc_engine_control() set to True
@@ -162,11 +206,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_05
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_05 >
 ============================================================
 /**
  * @brief
@@ -205,11 +248,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_06
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_06 >
 ============================================================
 /**
  * @brief
@@ -249,11 +291,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_07
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_07 >
 ============================================================
 /**
  * @brief
@@ -294,11 +335,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_08
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_08 >
 ============================================================
 /**
  * @brief
@@ -348,6 +388,7 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  * c:
  * Check whether the value of TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_CLUTCH is equal to  True,  
  * Check whether the value of TC4WD_SUPPORT.CONDITIONS.RESET_LOW_BY_BRAKE is equal to  True,  
+ *   
  * 
  * @type
  * Elementary Comparison Test (ECT)
@@ -360,11 +401,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_09
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_09 >
 ============================================================
 /**
  * @brief
@@ -439,11 +479,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_10
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_10 >
 ============================================================
 /**
  * @brief
@@ -483,11 +522,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_11
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_11 >
 ============================================================
 /**
  * @brief
@@ -533,11 +571,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_12
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_12 >
 ============================================================
 /**
  * @brief
@@ -585,11 +622,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_13
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_13 >
 ============================================================
 /**
  * @brief
@@ -622,11 +658,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_14
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_14 >
 ============================================================
 /**
  * @brief
@@ -659,11 +694,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_15
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_15 >
 ============================================================
 /**
  * @brief
@@ -696,11 +730,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_16
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_16 >
 ============================================================
 /**
  * @brief
@@ -740,11 +773,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_17
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_17 >
 ============================================================
 /**
  * @brief
@@ -787,11 +819,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_18
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_18 >
 ============================================================
 /**
  * @brief
@@ -845,11 +876,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_19
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_19 >
 ============================================================
 /**
  * @brief
@@ -896,11 +926,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_PRE_PROCESSING_Test_20
+ < TC4WD_SUPPORT_PRE_PROCESSING_Test_20 >
 ============================================================
 /**
  * @brief
@@ -941,11 +970,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_01
+ < TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_01 >
 ============================================================
 /**
  * @brief
@@ -1032,11 +1060,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_02
+ < TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_02 >
 ============================================================
 /**
  * @brief
@@ -1106,11 +1133,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_03
+ < TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_03 >
 ============================================================
 /**
  * @brief
@@ -1218,11 +1244,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_04
+ < TC4WD_SUPPORT_CHECK_STATE_ACTIVATION_Test_04 >
 ============================================================
 /**
  * @brief
@@ -1327,11 +1352,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_METHOD_Test_01
+ < TC4WD_SUPPORT_CHECK_STATE_METHOD_Test_01 >
 ============================================================
 /**
  * @brief
@@ -1402,11 +1426,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_METHOD_Test_02
+ < TC4WD_SUPPORT_CHECK_STATE_METHOD_Test_02 >
 ============================================================
 /**
  * @brief
@@ -1516,11 +1539,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_ENGINE_Test_01
+ < TC4WD_SUPPORT_CHECK_STATE_ENGINE_Test_01 >
 ============================================================
 /**
  * @brief
@@ -1601,11 +1623,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_ENGINE_Test_02
+ < TC4WD_SUPPORT_CHECK_STATE_ENGINE_Test_02 >
 ============================================================
 /**
  * @brief
@@ -1684,11 +1705,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_01
+ < TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_01 >
 ============================================================
 /**
  * @brief
@@ -1812,11 +1832,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_02
+ < TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_02 >
 ============================================================
 /**
  * @brief
@@ -1893,11 +1912,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_03
+ < TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_03 >
 ============================================================
 /**
  * @brief
@@ -1974,11 +1992,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_04
+ < TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_04 >
 ============================================================
 /**
  * @brief
@@ -2048,11 +2065,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_05
+ < TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_05 >
 ============================================================
 /**
  * @brief
@@ -2130,11 +2146,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_06
+ < TC4WD_SUPPORT_CHECK_STATE_BRAKE_Test_06 >
 ============================================================
 /**
  * @brief
@@ -2211,11 +2226,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_01
+ < TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_01 >
 ============================================================
 /**
  * @brief
@@ -2279,11 +2293,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_02
+ < TC4WD_SUPPORT_CHECK_STATE_CLUTCH_Test_02 >
 ============================================================
 /**
  * @brief
@@ -2373,11 +2386,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_CHECK_STATE_REFERENCE_Test_01
+ < TC4WD_SUPPORT_CHECK_STATE_REFERENCE_Test_01 >
 ============================================================
 /**
  * @brief
@@ -2440,11 +2452,10 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  * @validates
  *
- *
-**/
+ **/
 
 
- TC4WD_SUPPORT_POST_PROCESSING_Test_01
+ < TC4WD_SUPPORT_POST_PROCESSING_Test_01 >
 ============================================================
 /**
  * @brief
@@ -2561,7 +2572,7 @@ TC4WD_SUPPORT_PRE_PROCESSING_Test_03         ---->   1
  *
  **/ 
     
-    ==============================================================================
-                                        EOF
-    ==============================================================================
+    =====================================================================================================
+                                                    EOF
+    =====================================================================================================
     
