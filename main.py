@@ -50,6 +50,11 @@ Missed_Asserts_Dict = {}
 Precondn_Str = ""
 Updat_Flag = 0
 Submit_Flag = 0
+Doxy_Present_Or_Not = 0
+skipped_case = []
+yes, no = [1, 0]
+num_of_skip = 0
+COU_SET_Flag = 0
 
 
 def event_updater():
@@ -82,8 +87,8 @@ def results_updater():
 def generator():
     global COU_TEST_Count, ASSERT_Missing, Missed_Asserts, Order_Check_Flag, TEST_CASE_Name, COU_ASSERT_Count
     global dest, COU_CALL_Flag, COU_TEST_Flag, COU_SET_Count, COU_CALL_Count, Event_Print_Flag, Assert_Print_Flag
-    global Num_Lines, Name, COU_LOG, COU_LOG_Count, COU_LOG_List, Missed_Asserts_Dict, Missed_Asserts_Final
-    global Name, E1, Annotation_missing, alph, alph1, found, filepath, error_1, Precondn_Str, StrA
+    global Num_Lines, Name, COU_LOG, COU_LOG_Count, COU_LOG_List, Missed_Asserts_Dict, Missed_Asserts_Final, COU_SET_Flag
+    global Name, E1, Annotation_missing, alph, alph1, found, filepath, error_1, Precondn_Str, StrA, skipped_case, num_of_skip
     First_Time = 0
     Name = E1.get()
     dest = open("Doxygen_Gen.txt", "w")
@@ -150,6 +155,7 @@ def generator():
                 ==============================================================================
                 '''
                 if ch.find("COU_SET") == 0:
+                    COU_SET_Flag = 1
                     if COU_CALL_Flag:
                         COU_CALL_Flag = 0
                         ASSERT_Missing += 1
@@ -188,9 +194,17 @@ def generator():
                         '''
                 elif ch.find("COU_CALL") == 0:
                     COU_CALL_Count += 1
-                    Order_Check_Flag = 1
                     COU_CALL_Flag = 1
                     Event_Print_Flag = 1
+                    if COU_SET_Flag == 0:
+                        if Order_Check_Flag == 0 and COU_TEST_Flag:
+                            dest.write(" * \n * {}:\n".format(chr(alph)))
+                            alph += 1
+                            Order_Check_Flag = 1
+                            Asserts.append('\n * {}:\n *'.format(chr(alph1)))
+                            alph1 += 1
+                    COU_SET_Flag = 0
+                    Order_Check_Flag = 1
                     dat = (ch.strip())
                     dat1 = re.search('\((.+?)"', dat)
                     dat3 = re.search('"(.+?)"', dat)
@@ -214,7 +228,7 @@ def generator():
                     COU_ASSERT_Count += 1
                     Order_Check_Flag = 0
                     COU_CALL_Flag = 0
-
+                    COU_SET_Flag = 0
                     dat = (ch.strip())
                     dat1 = re.search('\((.+?),', dat)
                     dat2 = re.search(',(.+?)"', dat)
@@ -245,7 +259,7 @@ def generator():
                     COU_ASSERT_Count += 1
                     Order_Check_Flag = 0
                     COU_CALL_Flag = 0
-
+                    COU_SET_Flag = 0
                     dat = (ch.strip())
                     dat1 = re.search('\((.+?),', dat)
                     dat2 = re.search(',(.+?)"', dat)
@@ -273,6 +287,7 @@ def generator():
                 elif ch.find("COU_LOG") == 0 or ch.find("COU_PROPERTY") == 0:
                     COU_LOG_Count += 1
                     Order_Check_Flag = 0
+                    COU_SET_Flag = 0
                     Assert_Print_Flag = 1
                     dat = (ch.strip())
                     dat1 = re.search('"(.+?)"', dat)
@@ -315,7 +330,8 @@ def generator():
     # if Annotation_missing > 0:
     #     error("Annotation Missing\nPlease Update Annotations properly\n{}".format(Annotation_missed_in))
 
-    Str1 = '''
+    if Updat_Flag == 0 or Updat_Flag == 1:
+        Str1 = '''
                                   
 =====================================================================================================
 *                                   SUMMARY                                                                
@@ -339,6 +355,38 @@ Test Case                                               Num of Asserts  Missed
 ====================================== E n d  O f  S u m m a r y ====================================\n'''.format(time.asctime(), fp.name, dest.name, COU_TEST_Count, Num_Lines,
                                                                   COU_ASSERT_Count, COU_LOG_Count, ASSERT_Missing,
                                                                                                     "\n".join(Missed_Asserts_Final))
+    elif Updat_Flag == 2:
+        Str1 = '''
+
+=====================================================================================================
+*                                   SUMMARY                                                                
+*                            {}                                                
+=====================================================================================================
+
+*   Input File                          : {}                                
+*   Output File                         : {}
+*   Number Of Test Cases                : {}
+*   Number Of Lines                     : {}
+*   Number Of Asserts                   : {}
+*   Justifications(COU_LOG/COU_PROPERTY): {}
+*   Number Of Asserts Missed            : {}
+*   Where You Missed Asserts            :\n
+=====================================================================================================
+Test Case                                               Num of Asserts  Missed                                                   
+=====================================================================================================
+{} 
+
+*   Number of Skipped Cases             :{}
+*   Skipped Test Case Names             :
+ =====================================================================================================
+Test Case  Name                                                                                             
+=====================================================================================================
+{}    
+====================================== E n d  O f  S u m m a r y ====================================\n'''.format(
+        time.asctime(), fp.name, dest.name, COU_TEST_Count, Num_Lines,
+        COU_ASSERT_Count, COU_LOG_Count, ASSERT_Missing,
+        "\n".join(Missed_Asserts_Final), num_of_skip, skipped_case)
+
     # if Annotation_missing == 0:
     dest.write("\n * @type\n * Elementary Comparison Test (ECT)\n *\n * @regression\n * No\n *\n * @integration\n * No\n *\n * @validates\n *\n **/")
     dest.write(''' 
@@ -492,6 +540,7 @@ def update_enable_or_disable():
 
 
 def update():
+    global Doxy_Present_Or_Not, skipped_case, num_of_skip
     Str2 = ""
     L_num = 0
     with open("Doxygen_Gen.txt") as f:
@@ -501,6 +550,7 @@ def update():
                 dat1 = re.search('< (.+?) >', dat)
                 if dat1:
                     lookup = dat1.group(1)
+                    print(lookup)
             if "/**" in line:
                 start = 1
                 while start:
@@ -517,19 +567,54 @@ def update():
                                     if line1.find(lookup) >= 0:
                                         # print 'found at line:', lookup, L_num
                                         L = L_num
+                                        status = check_doxy_in_file(L)
+                                        print(status)
                                         break
-                            fp1 = open(filepath, "r")
-                            contents = fp1.readlines()
-                            fp1.close()
-                            contents.insert(L - 1, Str2)
-                            fp1 = open(filepath, "w")
-                            contents = "".join(contents)
-                            fp1.write(contents)
-                            fp1.close()
-                            Str2 = ""
-                            L_num = 0
-                            L = 0
-                            break
+                            if status == no:
+                                myFile.close()
+                                fp1 = open(filepath, "r")
+                                contents = fp1.readlines()
+                                fp1.close()
+                                contents.insert(L - 1, Str2)
+                                fp1 = open(filepath, "w")
+                                contents = "".join(contents)
+                                fp1.write(contents)
+                                fp1.close()
+                                Str2 = ""
+                                L_num = 0
+                                L = 0
+                                break
+                            else:
+                                myFile.close()
+                                skipped_case.append(lookup)
+                                num_of_skip += 1
+                                print("Skipped.......", lookup, num_of_skip)
+                                Str2 = ""
+                                L_num = 0
+                                L = 0
+                                break
+
+
+def check_doxy_in_file(line_number):
+    status = no
+
+    f = open(filepath, "r")
+    for i, found_str in enumerate(f):
+
+        # found_str = f.readline()
+        if (i >= line_number - 5) and (i < line_number):
+            print(line_number, i)
+            print(found_str.strip(' '))
+            if "*" in found_str.split(' ') or "*/" in found_str.split(' '):
+                print("Founded..", found_str)
+                status = yes
+                break
+            else:
+                status = no
+                print("not found")
+    print("exit", found)
+    f.close()
+    return status
 
 
 def remove():
