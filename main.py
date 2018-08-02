@@ -13,17 +13,19 @@ import subprocess
 from collections import Counter
 
 Str = '''*********************************************************
-*   Program       :   Doxygen Comments Generator          
-*   Version         :   1.3                               
-*   Developer    :   Anish Kumar                       
-*   Date             :   08-Jul-2018                                           
+*   Program         :   Doxygen Comments Generator          
+*   Version           :   1.3                               
+*   Developer      :   Anish Kumar 
+*                           anishelectronics10@gmail.com                         
+*   Release Date       :   08-Jul-2018                                           
 *********************************************************\
 '''
 StrA = '''*********************************************************
 *   Program       :   Doxygen Comments Generator        *
 *   Version       :   1.3                               *
 *   Developer     :   Anish Kumar                       *
-*   Date          :   08-Jul-2018                       *          
+*                     anishelectronics10@gmail.com      *
+*   Release Date  :   08-Jul-2018                       *          
 *********************************************************        
 '''
 COU_TEST_Count = 0
@@ -55,6 +57,8 @@ skipped_case = []
 yes, no = [1, 0]
 num_of_skip = 0
 COU_SET_Flag = 0
+TEST_CASE_Name = ""
+annotation_update_flag = 0
 
 
 def event_updater():
@@ -88,7 +92,7 @@ def generator():
     global COU_TEST_Count, ASSERT_Missing, Missed_Asserts, Order_Check_Flag, TEST_CASE_Name, COU_ASSERT_Count
     global dest, COU_CALL_Flag, COU_TEST_Flag, COU_SET_Count, COU_CALL_Count, Event_Print_Flag, Assert_Print_Flag
     global Num_Lines, Name, COU_LOG, COU_LOG_Count, COU_LOG_List, Missed_Asserts_Dict, Missed_Asserts_Final, COU_SET_Flag
-    global Name, E1, Annotation_missing, alph, alph1, found, filepath, error_1, Precondn_Str, StrA, skipped_case, num_of_skip
+    global Name, E1, Annotation_missing, alph, alph1, found, filepath, error_1, Precondn_Str, StrA, skipped_case, num_of_skip, annotation_update_flag
     First_Time = 0
     Name = E1.get()
     dest = open("Doxygen_Gen.txt", "w")
@@ -128,10 +132,14 @@ def generator():
                     else:
                         pass
                     if dat3:
-                        pass
+                        # if (dat3.group(1)).isspace():
+                        #     Annotation_Update_1(Num_Lines, line, dat3.group(1))
+                        # else:
+                            pass
                     else:
                         Annotation_missing += 1
                         Annotation_missed_in.append(Num_Lines + 1)
+                        # Annotation_Update(Num_Lines, line)
                     if Order_Check_Flag == 0:  # Order_Check_Flag = zero  Means Executing after COU_ASSERT
                         dest.write("\n\n ")
                         dest.write('< ')
@@ -154,7 +162,7 @@ def generator():
                                     COU_SET IDENTIFICATION
                 ==============================================================================
                 '''
-                if ch.find("COU_SET") == 0:
+                if ch.find("COU_SET") == 0 and COU_TEST_Count > 0:
                     COU_SET_Flag = 1
                     if COU_CALL_Flag:
                         COU_CALL_Flag = 0
@@ -171,7 +179,7 @@ def generator():
                         alph1 += 1
                     dat = (ch.strip())
                     dat1 = re.search('\((.+?),', dat)
-                    dat2 = re.search(',(.+?),',dat)
+                    dat2 = re.search(',(.+?),', dat)
                     dat3 = re.search('"(.+?)"', dat)
                     if COU_TEST_Flag:                   # Omiting checking SET before starting Test cases
                         if dat1:
@@ -180,10 +188,17 @@ def generator():
                         else:
                             pass
                         if dat3:
-                            pass
+                            if (dat3.group(1)).isspace():
+                                if annotation_update_flag:
+                                    Annotation_Update_1(Num_Lines, line, dat3.group(1))
+                            else:
+                                pass
                         else:
                             Annotation_missing += 1
                             Annotation_missed_in.append(Num_Lines + 1)
+                            # print("------------------------------", line)
+                            if annotation_update_flag:
+                                Annotation_Update(Num_Lines, line)
                         dest.write(' * ')
                         dest.write(found)
                         dest.write('\n')
@@ -192,7 +207,7 @@ def generator():
                                             COU_CALL IDENTIFICATION
                         ==============================================================================
                         '''
-                elif ch.find("COU_CALL") == 0:
+                elif ch.find("COU_CALL") == 0 and COU_TEST_Count > 0:
                     COU_CALL_Count += 1
                     COU_CALL_Flag = 1
                     Event_Print_Flag = 1
@@ -214,17 +229,21 @@ def generator():
                     else:
                         pass
                     if dat3:
-                        pass
+                        if (dat3.group(1)).isspace():
+                            Annotation_Update_1(Num_Lines, line, dat3.group(1))
+                        else:
+                            pass
                     else:
                         Annotation_missing += 1
                         Annotation_missed_in.append(Num_Lines + 1)
+                        Annotation_Update(Num_Lines, line)
                     Events.append(found)
                     ''' 
                     ==============================================================================
                                         COU_ASSERT_EQUAL IDENTIFICATION
                     ==============================================================================
                     '''
-                elif ch.find("COU_ASSERT_EQUAL") == 0:
+                elif ch.find("COU_ASSERT_EQUAL") == 0 and COU_TEST_Count > 0:
                     COU_ASSERT_Count += 1
                     Order_Check_Flag = 0
                     COU_CALL_Flag = 0
@@ -242,10 +261,14 @@ def generator():
                     else:
                         pass
                     if dat3:
-                        pass
+                        if (dat3.group(1)).isspace():
+                            Annotation_Update_1(Num_Lines, line, dat3.group(1))
+                        else:
+                            pass
                     else:
                         Annotation_missing += 1
                         Annotation_missed_in.append(Num_Lines+1)
+                        Annotation_Update(Num_Lines, line)
                     # if found not in current_assert_list:
                     Asserts.append(found)
                     Asserts.append('\n *')
@@ -255,7 +278,7 @@ def generator():
                                         COU_ASSERT_NOT_EQUAL IDENTIFICATION
                     ==============================================================================
                     '''
-                elif ch.find("COU_ASSERT_NOT_EQUAL") == 0:
+                elif ch.find("COU_ASSERT_NOT_EQUAL") == 0 and COU_TEST_Count > 0:
                     COU_ASSERT_Count += 1
                     Order_Check_Flag = 0
                     COU_CALL_Flag = 0
@@ -271,10 +294,14 @@ def generator():
                     else:
                         pass
                     if dat3:
-                        pass
+                        if (dat3.group(1)).isspace():
+                            Annotation_Update_1(Num_Lines, line, dat3.group(1))
+                        else:
+                            pass
                     else:
                         Annotation_missing += 1
                         Annotation_missed_in.append(Num_Lines + 1)
+                        Annotation_Update(Num_Lines, line)
                     Asserts.append(found)
                     Asserts.append('\n *')
                     Assert_Print_Flag = 1
@@ -284,7 +311,7 @@ def generator():
                                         COU_LOG IDENTIFICATION
                     ==============================================================================
                     '''
-                elif ch.find("COU_LOG") == 0 or ch.find("COU_PROPERTY") == 0:
+                elif ch.find("COU_LOG") == 0 or ch.find("COU_PROPERTY") == 0 and COU_TEST_Count > 0:
                     COU_LOG_Count += 1
                     Order_Check_Flag = 0
                     COU_SET_Flag = 0
@@ -399,13 +426,42 @@ Test Case  Name
     dest = open("Doxygen_Gen.txt", "r")
     contents = dest.readlines()
     dest.close()
-    contents.insert(6, Str1)
+    contents.insert(7, Str1)
     dest = open("Doxygen_Gen.txt", "w")
     contents = "".join(contents)
     dest.write(contents)
     fp.close()
     dest.close()
     root.destroy()
+
+
+def Annotation_Update(L, line):
+    x = open(filepath, "r")
+    contents = x.readlines()
+    x.close()
+    x = open(filepath, "w")
+    str_replace = "\"" + found + "\""
+    line1 = line.replace('""', str_replace)
+    contents.insert(L, line1)
+    contents.remove(line)
+    contents = "".join(contents)
+    x.write(contents)
+    x.close()
+
+
+def Annotation_Update_1(L, line, str_rep):
+    x = open(filepath, "r")
+    contents = x.readlines()
+    x.close()
+    x = open(filepath, "w")
+    str_replace = "\"" + found + "\""
+    str_rep = "\"" + str_rep + "\""
+    line1 = line.replace(str_rep, str_replace)
+    contents.insert(L, line1)
+    contents.remove(line)
+    contents = "".join(contents)
+    x.write(contents)
+    x.close()
 
 
 def gui_main():
@@ -492,10 +548,19 @@ def gui_main():
 
 
 def submit():
-    global filepath, error_1, Updat_Flag, Submit_Flag
+    global filepath, error_1, Updat_Flag, Submit_Flag, annotation_update_flag
     Submit_Flag = 1
     if filepath != "NULL" and error_1 == 0:
-        res = tkMessageBox.askquestion("Updating Source File", "Do you Want to Update Selected File With \n Doxygen Comments ?", icon='info')
+        fp = open(filepath,"r")
+        res = tkMessageBox.askquestion("Doxygen File Generated", "Do you Want to Update " + fp.name + " With \n Generated Doxygen Comments ?", icon='info')
+        annotation_update_ = tkMessageBox.askquestion("Annotation Updater", "Do You Want to update \nMissed Annotations in " + fp.name + "?", icon='info')
+        if annotation_update_ == "yes":
+            annotation_update_flag = 1
+        elif annotation_update_ == "no":
+            annotation_update_flag = 0
+        else:
+            pass
+
         if res == 'yes':
             Updat_Flag = 1
             generator()
@@ -507,6 +572,7 @@ def submit():
     else:
         error_1 = 0
         error("Please Choose File")
+    fp.close()
 
 
 def info():
